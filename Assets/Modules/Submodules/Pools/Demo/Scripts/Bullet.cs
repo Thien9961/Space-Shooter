@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
-public class Ship : Destrucible
+public class Bullet : MonoBehaviour
 {
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -13,8 +11,8 @@ public class Ship : Destrucible
     }
 
     // Update is called once per frame
-    protected override void Update()
+    void Update()
     {
-        base.Update();
+        
     }
 }
