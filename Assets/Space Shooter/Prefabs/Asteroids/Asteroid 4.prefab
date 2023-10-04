@@ -95,7 +95,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9003192506669562972}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -176,11 +176,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010d5555f51fd5c42bd3b1497f5ad821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
+  hp: 10
   onDeathSfx: {fileID: 0}
   onDeathVfx: {fileID: 0}
   speed: 0
-  amplification: 1
 --- !u!82 &6996156699918895426
 AudioSource:
   m_ObjectHideFlags: 0

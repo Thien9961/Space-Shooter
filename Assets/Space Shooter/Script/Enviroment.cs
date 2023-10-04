@@ -5,23 +5,30 @@ using Redcode.Pools;
 
 public class Enviroment : MonoBehaviour
 {
-    public PoolManager pool;
-    public static readonly int[] poolIndex = { 0, 1, 2 };
+    public static PoolManager pool;
+    public static readonly int[] poolIndex = { 0, 1,2,3 };
+    public static Transform poolContainer;
     public static Rect screenBound;
     public int maxAsteroid;
+    public Vector2 spawnInterval;
+    public Vector3 asteroidMaxVelocity;
+    public float asteroidMaxTorque;
     // Start is called before the first frame update
 
     void Start()
     {
-        screenBound= GameObject.Find("Canvas").GetComponent<Canvas>().pixelRect;
+        poolContainer = transform;
+        screenBound = GameObject.Find("Canvas").GetComponent<Canvas>().pixelRect;
         pool = GameObject.Find("Pool Manager").GetComponent<PoolManager>();
-        InvokeRepeating("Spawn", 1, 0.1f);
+        
     }
 
-    public List<Asteroid> GetActiveAsteroid()
+
+
+    public static List<Asteroid> GetActiveAsteroid()
     {
         List<Asteroid> l=new List<Asteroid> ();
-        foreach (Transform t in transform)
+        foreach (Transform t in poolContainer)
             if (t.gameObject.activeSelf)
                 l.Add(t.GetComponent<Asteroid>());
         return l;
@@ -34,10 +41,12 @@ public class Enviroment : MonoBehaviour
             var asteroidClone = pool.GetFromPool<Transform>(rng);
             if(asteroidClone!= null)
             {
-                asteroidClone.GetComponent<Asteroid>().pool = pool.GetPool<Transform>(rng);
-                Vector2 v2 = Camera.main.ScreenToWorldPoint(GameManager.RandomLocInRect(screenBound));
-                Vector3 v3 = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0.002f);
-                asteroidClone.GetComponent<Asteroid>().IntialState(v2, v3, Random.Range(-1f, 1f));
+                Asteroid a = asteroidClone.GetComponent<Asteroid>();
+                a.pool = pool.GetPool<Transform>(rng);
+                Vector2 v1 = GameManager.RandomLocInRect(screenBound);
+                Vector2 v2 = Camera.main.ScreenToWorldPoint(new Vector3(v1.x,v1.y,0));
+                Vector3 v3 = new Vector3(Random.Range(-asteroidMaxVelocity.x, asteroidMaxVelocity.x), Random.Range(-asteroidMaxVelocity.y, asteroidMaxVelocity.y), Random.Range(-asteroidMaxVelocity.z, asteroidMaxVelocity.z));
+                a.IntialState(v2, v3, Random.Range(-asteroidMaxTorque, asteroidMaxTorque));
                 return asteroidClone.GetComponent<Asteroid>();
             } 
         }

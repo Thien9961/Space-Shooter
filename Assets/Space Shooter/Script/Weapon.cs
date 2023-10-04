@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class Weapon : MonoBehaviour
 {
-    public float sensivity = 20, cooldown = 0.25f, damage = 1, spread;
+    public string weaponName;
+    public float sensivity = 20, cooldown = 0.25f, damage = 1, spread=0;
     private float Spread
     {
         get { return spread; }
@@ -24,6 +25,7 @@ public class Weapon : MonoBehaviour
     public AudioClip firingSfx;
     public bool ready;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,24 +33,39 @@ public class Weapon : MonoBehaviour
         trigger.GetComponent<Btn>().action=new Btn.Action(Fire);
     }
 
-    public Destrucible HitScan()
+    public List<Destrucible> HitScan()
     {
+        List<Destrucible> d = new List<Destrucible>();
         for(int i=0;i<multishot;i++)
         {
-            Collider2D[] victims=Physics2D.OverlapCircleAll(transform.position, Spread);
             Vector2 hit = Camera.main.ScreenToWorldPoint(new Vector2(transform.position.x + Random.Range(-Spread, Spread), transform.position.y + Random.Range(-Spread, Spread)));
-            foreach(Collider2D c in victims)
-                if(c.bounds.Contains(hit) && c.GetComponent<Destrucible>()!=null)
+            foreach(Asteroid a in Enviroment.GetActiveAsteroid())
+                if(a.GetComponent<Collider2D>().bounds.Contains(hit))
                 {
-                    Instantiate(hitVfx, hit, hitVfx.transform.rotation);
-                    c.GetComponent<Destrucible>().TakeDamage(damage);
-                    Debug.Log(c.name + " tooks " + damage + " damages.");
-                    return c.GetComponent<Destrucible>();
+                    Instantiate(hitVfx, hit, hitVfx.transform.rotation).transform.localScale=a.transform.localScale;
+                    a.TakeDamage(damage);
+                    Debug.Log(a.name + " tooks " + damage + " damages.");
+                    if(!d.Contains(a))
+                        d.Add(a);
                 }         
         }
-        return null;
+        return d;
     }
-    
+
+     private IEnumerator StopBlinking(float sec, Color c)
+    {
+        Image i = GetComponent<Image>();
+        Color original = i.color;
+        i.color = c;
+        yield return new WaitForSeconds(sec);
+        i.color = original;
+        StopCoroutine(StopBlinking(sec, c));
+    }
+    public void BlinkCrosshair(Color c, float rate)
+    {
+        StartCoroutine(StopBlinking(rate, c));
+    }
+
     IEnumerator coolingdown(float sec)
     {
         yield return new WaitForSeconds(sec);
@@ -60,10 +77,10 @@ public class Weapon : MonoBehaviour
         {
             ready = false;
             HitScan();
+            BlinkCrosshair(Color.red, cooldown);
             if(firingSfx != null)
                 GetComponent<AudioSource>().PlayOneShot(firingSfx);
             StartCoroutine(coolingdown(cooldown));
-            Debug.Log("Fire!");
         }
         
     }

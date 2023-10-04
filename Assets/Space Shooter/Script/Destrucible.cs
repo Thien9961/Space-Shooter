@@ -17,11 +17,12 @@ public class Destrucible : MonoBehaviour
 
     public virtual void Death()
     {
-        GameManager.PlaySfx(onDeathSfx,transform.position);
-        Instantiate(onDeathVfx, transform.position, onDeathVfx.transform.rotation);
-        Destroy(gameObject);
-    }
 
+        GameManager.PlaySfx(onDeathSfx,transform.position);
+        if(onDeathVfx != null)
+            Instantiate(onDeathVfx, transform.position, onDeathVfx.transform.rotation);
+
+    }
     void Start()
     {
         

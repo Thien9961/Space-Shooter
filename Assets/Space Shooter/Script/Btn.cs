@@ -1,33 +1,69 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+
+public enum UIElementType
+{
+    STATIC,
+    FLOATING,
+    DYNAMIC,
+}
 
 public class Btn : MonoBehaviour
 {
-        private Button button;
-        public delegate void Action();
-        public Action action;
-        private bool isButtonDown = false;
-
-        protected virtual void Start()
+    public delegate void Action();
+    public Action action;
+    public bool logicSignal;
+    public UIElementType type;
+    public TextMeshProUGUI text;
+    
+    protected virtual void Start()
         {
-            button=GetComponent<Button>();      
+            if(transform.childCount>0)
+                text = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         }
 
-        public void OnButtonDown()
+        public virtual void True()
         {
-            isButtonDown = true;
+            logicSignal = true;
         }
 
-        public void OnButtonUp()
+        public virtual void False()
         {
-            isButtonDown = false;
+            logicSignal = false;
         }
-
+       
+        
         protected virtual void Update()
+        {   
+        switch (type)
         {
-            if (isButtonDown)
-                action();
+            case UIElementType.STATIC:
+                {
+                    if (logicSignal)
+                        action();
+                    break;
+                }
+            case UIElementType.FLOATING:
+                {
+                    
+                    if (logicSignal)
+                    {
+                        action();
+                        transform.position = new Touch().position;
+                    }    
+                    break;
+                }
+            case UIElementType.DYNAMIC:
+                {
+                    transform.position = new Touch().position;
+                    if (!logicSignal)
+                        gameObject.SetActive (false);
+                    break;
+                }
         }
+    }
 }

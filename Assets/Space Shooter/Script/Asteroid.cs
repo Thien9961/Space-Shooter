@@ -7,24 +7,31 @@ using UnityEngine.Events;
 
 public class Asteroid : Destrucible
 {
-    public float speed=0, amplification=1;
+    public float speed = 0;
     public IPool<Transform> pool;
     void Move()
     {
-        if (transform.localScale.x < 5)
+        if (Mathf.Abs(transform.localScale.x) < 3.5)
             transform.localScale += Vector3.one * speed;
         else
         {
-            pool.Take(GetComponent<Transform>());
+            Death();
             if (Enviroment.screenBound.Contains(Camera.main.WorldToScreenPoint(transform.position)))
-                Debug.Log($"Player tooks {5} damages from {name}");
+                GameManager.player.TakeDamage(10);
             else
                 Debug.Log($"Player was not take damage from {name}");
-            //GameManager.player.TakeDamage(10);
         }
+            
             
     }
 
+    public override void Death()
+    {
+        base.Death();
+        pool.Take(GetComponent<Transform>());
+
+        
+    }
     public void IntialState(Vector2 position,Vector3 velocity,float torque)
     {
         transform.position = position;
@@ -44,6 +51,7 @@ public class Asteroid : Destrucible
     // Update is called once per frame
     protected override void Update()
     {
+        base.Update();
         Move();
     }
 }
