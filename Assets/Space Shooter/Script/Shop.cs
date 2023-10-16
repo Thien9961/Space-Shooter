@@ -8,29 +8,52 @@ using TMPro;
 using Unity.VisualScripting;
 using System;
 using System.Runtime.CompilerServices;
+using BayatGames.SaveGameFree;
 
 public class Shop : UIMenu
 {
     public Ship[] ship;
     public static int selected = 0;
 
+    public void NextShip()
+    {
+        if (selected + 1 < ship.Length)
+            selected++;
+        else
+            selected = 0;
+        Display(true);
+        GameManager.Save();
+    }
+
+    public void PreviousShip()
+    {
+        if(selected-1 >= 0)
+            selected--;
+        else
+            selected=ship.Length-1;
+        Display(true);
+        GameManager.Save();
+    }
     public override void Preset()
     {
         Ship s = ship[selected];
-        SetText("Ship Name Text", name);
+        SetText("Ship Name Text", s.name);
         SetText("Mineral Text", "Mineral: "+GameManager.mineral.ToString());
+        SetText("Ship Stat Text", "HP: "+s.hp+"\nDamage: "+s.weapon.damage);
         SetImage("Ship Image", s.GetComponent<UnityEngine.UI.Image>());
+        SetButtonAction("Next Ship Button", NextShip);
+        SetButtonAction("Previous Ship Button", PreviousShip);
         if (s.owned)
         {
-            ObjectSetActive("Lock Image", false);
-            ButtonSetText("Select Ship Button", "Play");
-            ButtonSetAction("Select Ship Button", s.Deploy);
+            SetObjectActive("Lock Image", false);
+            SetButtonText("Select Ship Button", "Play");
+            SetButtonAction("Select Ship Button", s.Deploy);
         }   
         else
         {
-            ObjectSetActive("Lock Image", true);
-            ButtonSetText("Select Ship Button", "Unlock: " + s.price);
-            ButtonSetAction("Select Ship Button", Sell);
+            SetObjectActive("Lock Image", true);
+            SetButtonText("Select Ship Button", "Unlock: " + s.price);
+            SetButtonAction("Select Ship Button", Sell);
         }
             
     }
@@ -40,16 +63,21 @@ public class Shop : UIMenu
             if (GameManager.mineral >= ship[selected].price)
             {
                 GameManager.mineral -= ship[selected].price;
-                ship[selected].owned = true;
+                ship[selected].owned =true;
                 SetText("Mineral Text", "Mineral: "+GameManager.mineral.ToString());
-                ButtonSetAction("Select Ship Button", ship[selected].Deploy);
-                ButtonSetText("Select Ship Button", "Play");
-                ObjectSetActive("Lock Image", false);
+                SetButtonAction("Select Ship Button", ship[selected].Deploy);
+                SetButtonText("Select Ship Button", "Play");
+                SetObjectActive("Lock Image", false);
+                GameManager.Save();
             }
             else
             {
-                Debug.Log("not enough");
+                GUI.Window(GetInstanceID(),new Rect(0,0,100,100),PopupMessage,"Not enough mineral");
             }
+    }
+    public void PopupMessage(int windowID)
+    {
+        GUI.DragWindow(new Rect(0, 0, 10000, 10000));
     }
 }
 

@@ -9,49 +9,42 @@ public class Asteroid : Destrucible
 {
     public float speed = 0;
     public IPool<Transform> pool;
+    public int mineralBonus;
     void Move()
     {
         if (Mathf.Abs(transform.localScale.x) < 3.5)
             transform.localScale += Vector3.one * speed;
         else
         {
-            Death();
-            if (Enviroment.screenBound.Contains(Camera.main.WorldToScreenPoint(transform.position)))
-                GameManager.player.TakeDamage(10);
-            else
-                Debug.Log($"Player was not take damage from {name}");
+            Death(null);
+            if (Enviroment.screenBound.Contains(Camera.main.WorldToScreenPoint(transform.position)) && GameManager.player!=null)
+                GameManager.player.TakeDamage(gameObject,10);
         }
             
             
     }
 
-    public override void Death()
+    public override void Death(GameObject killer)
     {
-        base.Death();
+        base.Death(killer);
         pool.Take(GetComponent<Transform>());
+        if (killer != null && killer.GetComponent<Ship>() != null )
+            killer.GetComponent<Ship>().mineral += mineralBonus;
 
-        
     }
-    public void IntialState(Vector2 position,Vector3 velocity,float torque)
+    public void IntialState(Vector2 position,Vector3 velocity,float torque,Vector3 distance)
     {
         transform.position = position;
-        transform.localScale = Vector3.zero;
+        transform.localScale = distance;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.AddTorque(torque);
         rb.velocity = new Vector2(velocity.x, velocity.y);
         speed = velocity.z;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
-    protected override void Update()
+    public void Update()
     {
-        base.Update();
         Move();
     }
 }

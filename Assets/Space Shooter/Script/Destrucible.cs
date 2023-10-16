@@ -7,31 +7,20 @@ public class Destrucible : MonoBehaviour
     public float hp;
     public AudioClip onDeathSfx;
     public ParticleSystem onDeathVfx;
-    // Start is called before the first frame update
 
-
-    public virtual void TakeDamage(float amount) 
+    public virtual void TakeDamage(GameObject source, float amount) 
     {
         hp-=amount;
+        if (!(hp > 0))
+            Death(source);
     }
 
-    public virtual void Death()
+    public virtual void Death(GameObject killer)
     {
-
         GameManager.PlaySfx(onDeathSfx,transform.position);
         if(onDeathVfx != null)
             Instantiate(onDeathVfx, transform.position, onDeathVfx.transform.rotation);
 
     }
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    protected virtual void Update()
-    {
-        if (!(hp > 0))
-            Death();
-    }
 }

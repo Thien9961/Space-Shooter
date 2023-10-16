@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4570500968941248168}
   - component: {fileID: 4718570171656264278}
   - component: {fileID: 8580486110208647962}
+  - component: {fileID: 3664614984448797305}
   m_Layer: 0
   m_Name: Asteroid 1
   m_TagString: Untagged
@@ -104,6 +105,7 @@ MonoBehaviour:
   onDeathSfx: {fileID: 0}
   onDeathVfx: {fileID: 0}
   speed: 0
+  mineralBonus: 100
 --- !u!60 &4570500968941248168
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -133,7 +135,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -285,3 +287,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &3664614984448797305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571478329739634382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfed4aec860cee0429a263d7e5d033d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

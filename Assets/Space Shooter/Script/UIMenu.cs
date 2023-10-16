@@ -42,7 +42,7 @@ public class UIMenu : MonoBehaviour
         gameObject.SetActive(display);
     }
 
-    public void ObjectSetActive(string objectName, bool active)
+    public void SetObjectActive(string objectName, bool active)
     {
         var v = hashtable[objectName] as Component;
         v.gameObject.SetActive(active);
@@ -54,14 +54,20 @@ public class UIMenu : MonoBehaviour
         t.SetText(message);
     }
 
-    public void ButtonSetText(string buttonName, string message)
+    public void SetImageColor(string imageName, Color color) 
+    {
+        Image i = (Image)hashtable[imageName];
+        i.color = color;
+    }
+
+    public void SetButtonText(string buttonName, string message)
     {
         Button b = (Button)hashtable[buttonName];  
         if (b.transform.childCount > 0)
             b.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = message;
     }
 
-    public virtual void ButtonSetAction(string buttonName, UnityEngine.Events.UnityAction action)
+    public virtual void SetButtonAction(string buttonName, UnityEngine.Events.UnityAction action)
     {
         Button b = (Button)hashtable[buttonName];
         b.onClick.RemoveAllListeners();

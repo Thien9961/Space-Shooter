@@ -21,7 +21,7 @@ public class Weapon : MonoBehaviour
     public int multishot=1;
     public Joystick joystick;
     public ParticleSystem hitVfx;
-    public GameObject trigger;
+    public GameObject trigger, owner;
     public AudioClip firingSfx;
     public bool ready;
 
@@ -31,6 +31,7 @@ public class Weapon : MonoBehaviour
     {
         ready=true;
         trigger.GetComponent<Btn>().action=new Btn.Action(Fire);
+        GetComponent<Image>().raycastTarget = false;
     }
 
     public List<Destrucible> HitScan()
@@ -43,9 +44,9 @@ public class Weapon : MonoBehaviour
                 if(a.GetComponent<Collider2D>().bounds.Contains(hit))
                 {
                     Instantiate(hitVfx, hit, hitVfx.transform.rotation).transform.localScale=a.transform.localScale;
-                    a.TakeDamage(damage);
-                    Debug.Log(a.name + " tooks " + damage + " damages.");
-                    if(!d.Contains(a))
+                    if(owner!=null)
+                        a.TakeDamage(owner,damage);
+                    if (!d.Contains(a))
                         d.Add(a);
                 }         
         }
@@ -77,7 +78,7 @@ public class Weapon : MonoBehaviour
         {
             ready = false;
             HitScan();
-            BlinkCrosshair(Color.red, cooldown);
+            BlinkCrosshair(Color.red, cooldown*0.95f);
             if(firingSfx != null)
                 GetComponent<AudioSource>().PlayOneShot(firingSfx);
             StartCoroutine(coolingdown(cooldown));
