@@ -30,7 +30,7 @@ public class ADM : MonoBehaviour
     public Hashtable Detect()
     {
         GameObject canvas = GameObject.Find("Canvas");
-        foreach (Asteroid a in Enviroment.GetActiveAsteroid())
+        foreach (Asteroid a in AsteroidField.GetActiveAsteroid())
         {
             bool  b, c, d, e;
             e = Mathf.Abs(a.transform.localScale.x) > sensivity;

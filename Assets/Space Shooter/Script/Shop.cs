@@ -3,17 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 using TMPro;
-using Unity.VisualScripting;
-using System;
-using System.Runtime.CompilerServices;
-using BayatGames.SaveGameFree;
 
 public class Shop : UIMenu
 {
     public Ship[] ship;
     public static int selected = 0;
+    public IAP iap;
 
     public void NextShip()
     {

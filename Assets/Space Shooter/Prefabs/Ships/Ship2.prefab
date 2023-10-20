@@ -259,6 +259,7 @@ MonoBehaviour:
   joystick: {fileID: 3385633787095837707}
   hitVfx: {fileID: 3808996690835891124, guid: e2862027be994954eabd6b5a42eb9ade, type: 3}
   trigger: {fileID: 6471453996493050110}
+  owner: {fileID: 0}
   firingSfx: {fileID: 0}
   ready: 0
 --- !u!1 &6471453996493050110
@@ -509,6 +510,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7f34589c8a4c3524ea01588e42ad51e8, type: 3}
   - {fileID: 21300000, guid: ec8ecae5bd1ccbc4aadfdbfed1ac034c, type: 3}
   - {fileID: 21300000, guid: b0e998efdd0db0240895462cffe1ed1c, type: 3}
+  mineral: 0
+  speed: 0.002
 --- !u!222 &3607232149242152461
 CanvasRenderer:
   m_ObjectHideFlags: 0

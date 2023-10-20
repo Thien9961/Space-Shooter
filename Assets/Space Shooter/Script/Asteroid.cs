@@ -5,33 +5,20 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Asteroid : Destrucible
+public class Asteroid : FlyingObject
 {
-    public float speed = 0;
-    public IPool<Transform> pool;
-    public int mineralBonus;
-    void Move()
+    protected override void Move()
     {
-        if (Mathf.Abs(transform.localScale.x) < 3.5)
-            transform.localScale += Vector3.one * speed;
+        if (Mathf.Abs(transform.localScale.x) < maxSize)
+            transform.localScale += Vector3.one * speed+ Vector3.one * GameManager.player.speed;
         else
-        {
-            Death(null);
+        {     
             if (Enviroment.screenBound.Contains(Camera.main.WorldToScreenPoint(transform.position)) && GameManager.player!=null)
                 GameManager.player.TakeDamage(gameObject,10);
-        }
-            
-            
+            Death(null);
+        }     
     }
 
-    public override void Death(GameObject killer)
-    {
-        base.Death(killer);
-        pool.Take(GetComponent<Transform>());
-        if (killer != null && killer.GetComponent<Ship>() != null )
-            killer.GetComponent<Ship>().mineral += mineralBonus;
-
-    }
     public void IntialState(Vector2 position,Vector3 velocity,float torque,Vector3 distance)
     {
         transform.position = position;

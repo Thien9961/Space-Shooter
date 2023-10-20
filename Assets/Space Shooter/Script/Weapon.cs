@@ -40,7 +40,7 @@ public class Weapon : MonoBehaviour
         for(int i=0;i<multishot;i++)
         {
             Vector2 hit = Camera.main.ScreenToWorldPoint(new Vector2(transform.position.x + Random.Range(-Spread, Spread), transform.position.y + Random.Range(-Spread, Spread)));
-            foreach(Asteroid a in Enviroment.GetActiveAsteroid())
+            foreach(Asteroid a in AsteroidField.GetActiveAsteroid())
                 if(a.GetComponent<Collider2D>().bounds.Contains(hit))
                 {
                     Instantiate(hitVfx, hit, hitVfx.transform.rotation).transform.localScale=a.transform.localScale;

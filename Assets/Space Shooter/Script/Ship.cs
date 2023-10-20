@@ -16,7 +16,7 @@ public class Ship : Destrucible
     public Weapon weapon;
     public Sprite[] damagedSprite;
     public int mineral; //minerals in ship's storage
-
+    public float speed;
 
 
     public void Deploy()
@@ -24,8 +24,10 @@ public class Ship : Destrucible
         Camera.main.transform.rotation = Quaternion.Euler(0, 0, 0);
         GameManager.player = Instantiate(gameObject, GameObject.Find("Canvas").transform).GetComponent<Ship>();
         GameManager.player.weapon.owner=GameManager.player.gameObject;
-        GameManager.SpawnEnable(true);
+        GameManager.manager.SpawnEnable(true);
         GameManager.shop.Display(false);
+        if(GameObject.Find("Speed Effect(Clone)") ==null)
+            Instantiate(Resources.Load<ParticleSystem>("Speed Effect"));
         mineral = 0;
     }
     public override void Death(GameObject killer)
@@ -34,6 +36,7 @@ public class Ship : Destrucible
         GameManager.mineral += mineral;
         GameManager.Save();
         Destroy(gameObject);
+        GameObject.Find("Ads Manager").GetComponent<InterstitialAdExample>().ShowAd();
     }
 
     public override void TakeDamage(GameObject source, float amount)
