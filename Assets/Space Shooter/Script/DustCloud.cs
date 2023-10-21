@@ -8,7 +8,7 @@ public class DustCloud : Enviroment
     public static Transform cloudContainer;
     public int[] objectPool;
     public float spawnInterval, cloudSize;
-    public static GameObject cloud;
+    public static Cloud cloud;
 
     protected override void Start()
     {
@@ -18,20 +18,16 @@ public class DustCloud : Enviroment
 
     public override IEnumerator NaturalSpawn()
     {
-        yield return new WaitForSeconds(Random.Range(0, spawnInterval));
+        yield return new WaitForSeconds(spawnInterval);
                 var rng = Random.Range(0, objectPool.Length);
                 var cloudClone = pool.GetFromPool<Transform>(objectPool[rng]);
-                if (cloudClone != null)
-                {
-                    Cloud c = cloudClone.GetComponent<Cloud>();
-                    c.poolIndex = objectPool[rng];
-                    Vector2 v1 = GameManager.RandomLocInRect(screenBound);
-                    Vector2 v2 = Camera.main.ScreenToWorldPoint(new Vector3(v1.x, v1.y, 0));
-                    c.transform.position = v2;
-                    c.maxSize = cloudSize;
-                    c.dustCloud=GetComponent<DustCloud>();
-                    c.GetComponent<SpriteRenderer>().sortingOrder = 100;
-                }
-        
+                cloud = cloudClone.GetComponent<Cloud>();
+                cloud.poolIndex = objectPool[rng];
+                Vector2 v1 = GameManager.RandomLocInRect(screenBound);
+                Vector2 v2 = Camera.main.ScreenToWorldPoint(new Vector3(v1.x, v1.y, 0));
+                cloud.maxSize = cloudSize;
+                cloud.dustCloud=GetComponent<DustCloud>();
+                cloud.GetComponent<SpriteRenderer>().sortingOrder = 100;
+                cloud.IntialState(v2,Vector3.zero,0,Vector3.zero,cloud.maxHp,Color.white);
     }
 }

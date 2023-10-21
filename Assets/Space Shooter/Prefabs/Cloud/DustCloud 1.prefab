@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3547600790450947829}
   - component: {fileID: 8879400403273875866}
   - component: {fileID: 137248942799575282}
+  - component: {fileID: 1252399861891512217}
   m_Layer: 0
   m_Name: DustCloud 1
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8879400403273875866
 SpriteRenderer:
@@ -97,9 +98,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 595552927673fef4ebe427b0524ce8cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHp: 1
   hp: 1
   onDeathSfx: {fileID: 0}
   onDeathVfx: {fileID: 0}
   speed: 0
   maxSize: 0
+  poolIndex: 0
   dustCloud: {fileID: 0}
+--- !u!95 &1252399861891512217
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6376387664646555895}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

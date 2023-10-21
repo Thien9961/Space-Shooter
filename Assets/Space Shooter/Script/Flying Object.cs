@@ -10,7 +10,7 @@ public class FlyingObject : Destrucible
     protected virtual void Move()
     {
         if (Mathf.Abs(transform.localScale.x) < maxSize)
-            transform.localScale += Vector3.one * speed+Vector3.one*GameManager.player.speed;
+            transform.localScale += (Vector3.one * speed+Vector3.one*GameManager.player.speed);
         else
             Death(null);
     }
@@ -19,5 +19,25 @@ public class FlyingObject : Destrucible
     {
         base.Death(killer);
         AsteroidField.pool.TakeToPool(poolIndex,transform);
+    }
+
+    public virtual void IntialState(Vector2 position, Vector3 velocity, float torque, Vector3 distance,float hp, Color color)
+    {
+        transform.position = position;
+        transform.localScale = distance;
+        if(TryGetComponent<Rigidbody2D>(out Rigidbody2D rb))
+        {
+            rb = GetComponent<Rigidbody2D>();
+            rb.AddTorque(torque);
+            rb.velocity = new Vector2(velocity.x, velocity.y);
+        }  
+        speed = velocity.z;
+        this.hp=hp;
+        GetComponent<SpriteRenderer>().color = color;
+    }
+
+    public virtual void FixedUpdate()
+    {
+        Move();
     }
 }

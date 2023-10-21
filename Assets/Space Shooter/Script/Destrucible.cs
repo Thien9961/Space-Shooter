@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Destrucible : MonoBehaviour
 {
-    public float hp;
+    public float maxHp;
+    [HideInInspector] public float hp;
     public AudioClip onDeathSfx;
     public ParticleSystem onDeathVfx;
 
@@ -13,6 +14,11 @@ public class Destrucible : MonoBehaviour
         hp-=amount;
         if (!(hp > 0))
             Death(source);
+    }
+
+    protected virtual void Start()
+    {
+        hp = maxHp;
     }
 
     public virtual void Death(GameObject killer)

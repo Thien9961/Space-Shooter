@@ -97,9 +97,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 595552927673fef4ebe427b0524ce8cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHp: 1
   hp: 1
   onDeathSfx: {fileID: 0}
   onDeathVfx: {fileID: 0}
   speed: 0
   maxSize: 0
+  poolIndex: 0
   dustCloud: {fileID: 0}

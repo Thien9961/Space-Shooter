@@ -744,7 +744,7 @@ MonoBehaviour:
   asteroidLimit: 50
   maxAsteroid: 3
   spawnInterval: 3
-  asteroidMaxTorque: 10
+  asteroidMaxTorque: 100
   asteroidSize: 3.5
   asteroidMaxVelocity: {x: 0.5, y: 0.5, z: 0.002}
   objectPool: 00000000010000000200000004000000

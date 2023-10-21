@@ -176,11 +176,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010d5555f51fd5c42bd3b1497f5ad821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHp: 15
   hp: 10
   onDeathSfx: {fileID: 0}
   onDeathVfx: {fileID: 0}
   speed: 0
-  mineralBonus: 200
+  maxSize: 0
+  poolIndex: 0
 --- !u!82 &6996156699918895426
 AudioSource:
   m_ObjectHideFlags: 0
