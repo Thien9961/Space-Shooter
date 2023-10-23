@@ -171,6 +171,9 @@ MonoBehaviour:
   speed: 0
   maxSize: 0
   poolIndex: 0
+  powerUps:
+  - {fileID: 7227610714344493237, guid: b2beb61f079cb484ab52c283e8a372e8, type: 3}
+  - {fileID: 665288707905045447, guid: 429c383bf9cd9484f91b3dd2711645b9, type: 3}
 --- !u!82 &8738078838659992646
 AudioSource:
   m_ObjectHideFlags: 0

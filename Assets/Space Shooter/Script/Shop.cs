@@ -9,7 +9,6 @@ public class Shop : UIMenu
 {
     public Ship[] ship;
     public static int selected = 0;
-    public IAP iap;
 
     public void NextShip()
     {

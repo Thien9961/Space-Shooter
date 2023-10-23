@@ -9,15 +9,12 @@ using UnityEngine.UI;
 
 public class Ship : Destrucible
 {
-    public float alertThreshold;
-    public bool owned;
-    public int price;
+    public float alertThreshold, speed;
+    public bool owned,invulnerable;
+    public int price, mineral;
     public UIMenu HUD;
     public Weapon weapon;
     public Sprite[] damagedSprite;
-    public int mineral; //minerals in ship's storage
-    public float speed;
-
 
     public void Deploy()
     {
@@ -41,13 +38,17 @@ public class Ship : Destrucible
 
     public override void TakeDamage(GameObject source, float amount)
     {
-        base.TakeDamage(source, amount);
-        Camera.main.transform.DOShakePosition(1, 0.5f, 10);
-        Transform t = new GameObject("Crack", typeof(Image)).transform;
-        t.SetParent(gameObject.transform);
-        t.position=Camera.main.WorldToScreenPoint(source.transform.position);
-        t.GetComponent<Image>().raycastTarget = false;
-        t.GetComponent<Image>().sprite = damagedSprite[Random.Range(0,damagedSprite.Length)];
+        if (!invulnerable)
+        {
+            base.TakeDamage(source, amount);
+            Camera.main.transform.DOShakePosition(1, 0.5f, 10);
+            Transform t = new GameObject("Crack", typeof(Image)).transform;
+            t.SetParent(gameObject.transform);
+            t.position = Camera.main.WorldToScreenPoint(source.transform.position);
+            t.GetComponent<Image>().raycastTarget = false;
+            t.GetComponent<Image>().sprite = damagedSprite[Random.Range(0, damagedSprite.Length)];
+        }
+        
     }
 
     public void Alert(bool alert)
