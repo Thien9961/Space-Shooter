@@ -12,7 +12,7 @@ using Utility;
 
 public class PowerUp : MonoBehaviour
 {
-    public float lifeSpan=Mathf.Infinity, travelTime=3;
+    public float lifeSpan=Mathf.Infinity, travelTime=3,appearChance=100;
     public bool autoCollect, hover;
     public Path2D path;
     public int poolIndex;

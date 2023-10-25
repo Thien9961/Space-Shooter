@@ -26,13 +26,16 @@ public class Asteroid : FlyingObject
         if(killer!=null)
             foreach(PowerUp p in powerUps)
             {
-                PowerUp pu=Enviroment.pool.GetFromPool<RectTransform>(p.poolIndex).GetComponent<PowerUp>();
-                if(!pu.autoCollect)
-                    pu.transform.position=Camera.main.WorldToScreenPoint(transform.position);
-                if (pu.TryGetComponent(out MineralBonus mb) && killer.TryGetComponent(out Ship receipent))
-                    mb.recipient = receipent;
-                if (pu.TryGetComponent(out SuperSpeed ss) && killer.TryGetComponent(out Ship user))
-                    ss.user = user;
+                if (Random.value*100 <= p.appearChance)
+                {
+                    PowerUp pu = Enviroment.pool.GetFromPool<RectTransform>(p.poolIndex).GetComponent<PowerUp>();
+                    pu.transform.position = Camera.main.WorldToScreenPoint(transform.position);
+                    if (pu.TryGetComponent(out MineralBonus mb) && killer.TryGetComponent(out Ship receipent))
+                        mb.recipient = receipent;
+                    if (pu.TryGetComponent(out SuperSpeed ss) && killer.TryGetComponent(out Ship user))
+                        ss.user = user;
+                }
+                
             }
             
     }

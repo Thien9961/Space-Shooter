@@ -1174,7 +1174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 609257271}
   m_Layer: 0
-  m_Name: Power Up Manager
+  m_Name: Power Up Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1681,6 +1681,53 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4632763462647393327, guid: a63f45d29a16ab740b1728179011785d, type: 3}
   m_PrefabInstance: {fileID: 1637299448}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1009661797
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1009661799}
+  - component: {fileID: 1009661798}
+  m_Layer: 0
+  m_Name: Dynamic Text Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1009661798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009661797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf7c18620c323414a849913f889acb05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultData: {fileID: 11400000, guid: 4d3693ec812859a4ea177ec4ae20eaf3, type: 2}
+  _canvasPrefab: {fileID: 1926280506753864649, guid: e124e19729a322b4281287dcc0eb622b, type: 3}
+  _mainCamera: {fileID: 519420032}
+--- !u!4 &1009661799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009661797}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1157958646
 GameObject:
   m_ObjectHideFlags: 0
@@ -2363,7 +2410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4661558190160642358, guid: a63f45d29a16ab740b1728179011785d, type: 3}
       propertyPath: ship.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4661558190160642358, guid: a63f45d29a16ab740b1728179011785d, type: 3}
       propertyPath: button.Array.size
@@ -2372,7 +2419,7 @@ PrefabInstance:
     - target: {fileID: 4661558190160642358, guid: a63f45d29a16ab740b1728179011785d, type: 3}
       propertyPath: ship.Array.data[0]
       value: 
-      objectReference: {fileID: 574837962999756460, guid: b2ab5b4ba2126cd4499e8081a5acd9b4, type: 3}
+      objectReference: {fileID: 8433257351666081977, guid: 8214c397d9599c341b359e0c6b75cadc, type: 3}
     - target: {fileID: 4661558190160642358, guid: a63f45d29a16ab740b1728179011785d, type: 3}
       propertyPath: ship.Array.data[1]
       value: 

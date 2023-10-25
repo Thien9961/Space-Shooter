@@ -171,6 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeSpan: 10
   travelTime: 5
+  appearChance: 50
   autoCollect: 0
   hover: 1
   poolIndex: 7

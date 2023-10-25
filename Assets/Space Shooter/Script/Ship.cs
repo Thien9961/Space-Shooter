@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 public class Ship : Destrucible
 {
-    public float alertThreshold, speed;
+    public float speed;
     public bool owned,invulnerable;
     public int price, mineral;
     public UIMenu HUD;
@@ -51,19 +53,10 @@ public class Ship : Destrucible
         
     }
 
-    public void Alert(bool alert)
-    {
-        Image i = (Image)HUD.hashtable["Alert"];
-        i.gameObject.SetActive(alert);
-    }
-
     // Update is called once per frame
     void Update()
     {
         HUD.SetText("Mineral Text", mineral.ToString());
-        if (hp < alertThreshold)
-            Alert(true);
-        else
-            Alert(false);
     }
 }
+

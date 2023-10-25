@@ -12,6 +12,10 @@ public class MineralBonus : PowerUp
     {
         base.EffectStart();
         if (recipient != null)
+        {
             recipient.mineral += amount;
+            DynamicTextManager.CreateText2D(Camera.main.ScreenToWorldPoint(transform.position), "+" + amount,DynamicTextManager.defaultData );
+        }
+            
     }
 }
