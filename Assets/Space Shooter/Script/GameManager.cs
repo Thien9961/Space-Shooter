@@ -35,10 +35,7 @@ public class GameManager : MonoBehaviour
     public void SpawnEnable(bool enable)
     {
         foreach(Enviroment e in enviroment)
-            if (enable)
-                e.StartCoroutine(e.NaturalSpawn());
-            else
-                e.StopCoroutine(e.NaturalSpawn());
+                e.gameObject.SetActive(enable);
     }
 
     // Start is called before the first frame update

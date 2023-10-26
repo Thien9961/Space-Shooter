@@ -16,6 +16,7 @@ public class Enviroment : MonoBehaviour
     {
         screenBound = GameObject.Find("Canvas").GetComponent<Canvas>().pixelRect;
         pool = GameObject.Find("Pool Manager").GetComponent<PoolManager>();
+        StartCoroutine(NaturalSpawn());
     }
 
     public virtual IEnumerator NaturalSpawn()

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 410189209907579935}
   - component: {fileID: 5888909136398597251}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Template Power Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

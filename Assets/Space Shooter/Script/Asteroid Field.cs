@@ -6,35 +6,49 @@ using UnityEngine.Pool;
 
 public class AsteroidField : Enviroment
 {
-    public int asteroidLimit, maxAsteroid;
-    public float spawnInterval, asteroidMaxTorque, asteroidSize;
+    public int asteroidLimit, minAsteroid,maxAsteroid;
+    public float maxInterval,minInterval, asteroidMaxTorque, asteroidSize;
     public Vector3 asteroidMaxVelocity;
     public static Transform asteroidContainer;
     public int[] objectPool;
+    public AsteroidField[] encounter;
     // Start is called before the first frame update
     protected override void Start()
     {
-        base.Start();
-        asteroidContainer = GetComponent<Transform>();
+        base.Start();    
+        if(asteroidContainer== null)
+            asteroidContainer = GetComponent<Transform>();
+        foreach(AsteroidField field in encounter)
+            Instantiate(field,transform);  
     }
 
     public static List<Asteroid> GetActiveAsteroid()
     {
         List<Asteroid> l = new List<Asteroid>();
         foreach (Transform t in asteroidContainer)
-            if (t.gameObject.activeSelf)
-                l.Add(t.GetComponent<Asteroid>());
+            if (t.gameObject.activeSelf && t.TryGetComponent(out Asteroid asteroid))
+                l.Add(asteroid);
         return l;
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine(NaturalSpawn());
     }
     public override IEnumerator NaturalSpawn()
     {
-        yield return new WaitForSeconds(Random.Range(0, spawnInterval));
-        var max = Random.Range(1, maxAsteroid);
-        for (int i = 0; i < max; i++)
+        yield return new WaitForSeconds(Random.Range(minInterval, maxInterval));
+        var max = Random.Range(minAsteroid, maxAsteroid);
+        var count = 0;
+        for (int i = 0; i < objectPool.Length; i++)
+            foreach (Asteroid ast in GetActiveAsteroid())
+                if (ast.poolIndex == objectPool[i])
+                    count++;
+        Debug.Log(name + count);
+        if (count < asteroidLimit)
         {
-            if (GetActiveAsteroid().Count < asteroidLimit)
+            for (int i = 0; i < max; i++)
             {
-                
                 int rng = Random.Range(0, objectPool.Length);
                 var asteroidClone = pool.GetFromPool<Transform>(objectPool[rng]);
                 if (asteroidClone != null)
@@ -47,6 +61,7 @@ public class AsteroidField : Enviroment
                     Vector3 v3 = new Vector3(Random.Range(-asteroidMaxVelocity.x, asteroidMaxVelocity.x), Random.Range(-asteroidMaxVelocity.y, asteroidMaxVelocity.y), Random.Range(-asteroidMaxVelocity.z, asteroidMaxVelocity.z));
                     a.IntialState(v2, v3, Random.Range(-asteroidMaxTorque, asteroidMaxTorque), Vector3.zero,a.maxHp,Color.white);
                 }
+
             }
         }
         StartCoroutine(NaturalSpawn());

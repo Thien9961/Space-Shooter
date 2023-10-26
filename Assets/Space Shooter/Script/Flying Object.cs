@@ -25,7 +25,7 @@ public class FlyingObject : Destrucible
     {
         transform.position = position;
         transform.localScale = distance;
-        if(TryGetComponent<Rigidbody2D>(out Rigidbody2D rb))
+        if(TryGetComponent(out Rigidbody2D rb))
         {
             rb = GetComponent<Rigidbody2D>();
             rb.AddTorque(torque);

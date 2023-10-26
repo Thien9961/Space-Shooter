@@ -32,7 +32,6 @@ public class PowerUp : MonoBehaviour
         }
         if (hover)
         {
-            GetComponent<Animator>().speed *= 2;
             Rect bound = GameObject.Find("Canvas").GetComponent<Canvas>().pixelRect;
             Rect r = bound;
             Rec.Expand(ref r, -GetComponent<RectTransform>().rect.width, -GetComponent<RectTransform>().rect.height);

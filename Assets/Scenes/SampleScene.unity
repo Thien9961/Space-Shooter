@@ -578,7 +578,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &309077710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -592,12 +592,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroidLimit: 50
+  minAsteroid: 0
   maxAsteroid: 2
-  spawnInterval: 4
+  maxInterval: 4
+  minInterval: 2
   asteroidMaxTorque: 100
   asteroidSize: 3.5
   asteroidMaxVelocity: {x: 0.5, y: 0.5, z: 0.002}
   objectPool: 00000000010000000200000004000000
+  encounter:
+  - {fileID: 309838280584845374, guid: 2d8b1535e4d54b045b6529114c7054b8, type: 3}
 --- !u!4 &309077711
 Transform:
   m_ObjectHideFlags: 0
@@ -2633,6 +2637,16 @@ MonoBehaviour:
     _count: 0
     _container: {fileID: 609257271}
     _nonLazy: 0
+  - _name: Spilt
+    _component: {fileID: 145243153510404126, guid: b2beb61f079cb484ab52c283e8a372e8, type: 3}
+    _count: 0
+    _container: {fileID: 609257271}
+    _nonLazy: 0
+  - _name: Boss
+    _component: {fileID: 7048093330085256693, guid: 231d017e8f81fe5478e43f2100811e7a, type: 3}
+    _count: 0
+    _container: {fileID: 309077711}
+    _nonLazy: 0
 --- !u!4 &1830310888
 Transform:
   m_ObjectHideFlags: 0
@@ -2917,7 +2931,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2039611026
 MonoBehaviour:
   m_ObjectHideFlags: 0
