@@ -14,7 +14,7 @@ namespace Utility
         /// </summary>
         /// <param name="r">Which Rect</param>
         /// <returns>The generated Vector2 </returns>
-        public static Vector2 RandomInsideRect(Rect r)
+        public static Vector2 RandomInRect(Rect r)
         {
             float x = Random.Range(r.xMin, r.xMax);
             float y = Random.Range(r.yMin, r.yMax);
@@ -48,6 +48,7 @@ namespace Utility
                 v3[i] = new Vector3(v2[i].x, v2[i].y, 0);
             return v3;
         }
+
     }
 
     public class Rec
@@ -66,6 +67,14 @@ namespace Utility
             r.height += expandY;
             r.center=v;
         }
+
+        public static void Scale(ref Rect r, float scaleX, float scaleY)
+        {
+            Vector2 v = r.center;
+            r.width *= scaleX;
+            r.height *= scaleY;
+            r.center = v;
+        }
     }
 
     public class Draw
@@ -75,12 +84,21 @@ namespace Utility
         /// </summary>
         /// <param name="r">Which Rect</param>
         /// <param name="c">Color of the drawn Rect</param>
-        public static void Rec(Rect r,Color c)
+        public static void Rec(Rect r,Color c,float duration=Mathf.Infinity)
         {
             Debug.DrawLine(new Vector3(r.xMin,r.yMin,0), new Vector3(r.xMin, r.yMax,0),c,Mathf.Infinity);
             Debug.DrawLine(new Vector3(r.xMin, r.yMax,0), new Vector3(r.xMax, r.yMax,0),c, Mathf.Infinity);
             Debug.DrawLine(new Vector3(r.xMax, r.yMax,0), new Vector3(r.xMax, r.yMin,0),c, Mathf.Infinity);
             Debug.DrawLine(new Vector3(r.xMax, r.yMin,0), new Vector3(r.xMin, r.yMin,0), c, Mathf.Infinity);
+        }
+
+        public static void Lines(Vector2[] v,Color c, float duration = Mathf.Infinity)
+        {
+            for(int i=0;i<v.Length-1; i++)
+            {
+                Debug.DrawLine(new Vector3(v[i].x, v[i].y, 0), new Vector3(v[i+1].x, v[i+1].y, 0), c, Mathf.Infinity);
+
+            }
         }
     }
 
@@ -177,10 +195,14 @@ namespace Utility
     public class Path2D
     {
         public Vector2[] waypoint;
+        public Vector2 start,end;
+
 
         public Path2D(Vector2[] waypoints)
         {
             this.waypoint = waypoints;
+            start = waypoint[0];
+            end = waypoint[waypoint.Length - 1];
         }
 
         public Path2D()
@@ -190,6 +212,8 @@ namespace Utility
                 new Vector2(0, 0),
                 new Vector2(0, 0)
                 };
+            start = waypoint[0];
+            end = waypoint[waypoint.Length - 1];
         }
 
         public Vector2[] GetSegments()
@@ -208,16 +232,28 @@ namespace Utility
             return f;
         }
 
-        public static Vector2[] RandomInsideRect(Rect r, int segment)
+        public static Vector2[] RandomPath(Vector2 start,Vector2 end, Rect bound, int segment)
         {
-            List<Vector2> v = new List<Vector2>(segment + 1);
-            for (int j = 0; j < segment + 1; j++)
-                v.Add(Vector2.zero);
-            for (int i = 0; i < v.Count; i++)
-                    v[i] = Vec.RandomInsideRect(r);
-            return v.ToArray();
+            Vector2[] v = new Vector2[segment + 1];
+            v[0] = start; v[v.Length-1] = end;
+            for (int i = 1; i < v.Length-1; i++)
+            {
+                float spawnY = Random.Range
+                    (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y, new Vector2(0, bound.height).y);
+                float spawnX = Random.Range
+                    (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x, new Vector2(bound.width, 0).x);
+
+                Vector2 spawnPosition = new Vector2(spawnX, spawnY);
+                v[i] = spawnPosition;
+            }
+                //v[i] = Vec.RandomInRect(bound);
+            return v;
         }
     }
 
+    public class Const
+    {
+        public readonly int Infinity =Mathf.RoundToInt(Mathf.Infinity);
+    }
 }
 

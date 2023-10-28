@@ -108,7 +108,7 @@ MonoBehaviour:
   maxSize: 0
   poolIndex: 0
   powerUps:
-  - {fileID: 665288707905045447, guid: 429c383bf9cd9484f91b3dd2711645b9, type: 3}
+  - {fileID: 1389137811926188050, guid: 429c383bf9cd9484f91b3dd2711645b9, type: 3}
 --- !u!60 &4570500968941248168
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
+using static BayatGames.SaveGameFree.Examples.ExampleSaveCustom;
 
 public class Ship : Destrucible
 {
@@ -21,11 +22,8 @@ public class Ship : Destrucible
     public void Deploy()
     {
         Camera.main.transform.rotation = Quaternion.Euler(0, 0, 0);
-        GameManager.player = Instantiate(gameObject, GameObject.Find("Canvas").transform).GetComponent<Ship>();
-        GameManager.player.weapon.owner=GameManager.player.gameObject;
-        GameManager.manager.SpawnEnable(true);
-        GameManager.shop.Display(false);
-        if(GameObject.Find("Speed Effect(Clone)") ==null)
+        GameManager.Begin();
+        if (GameObject.Find("Speed Effect(Clone)") ==null)
             Instantiate(Resources.Load<ParticleSystem>("Speed Effect"));
         mineral = 0;
     }

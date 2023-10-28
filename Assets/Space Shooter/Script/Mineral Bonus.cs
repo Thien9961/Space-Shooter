@@ -18,4 +18,10 @@ public class MineralBonus : PowerUp
         }
             
     }
+
+    public void Init(Vector2 position,Ship recipent)
+    {
+        transform.position = position;
+        this.recipient = recipent;
+    }
 }

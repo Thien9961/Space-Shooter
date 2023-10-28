@@ -64,7 +64,7 @@ public class ADM : MonoBehaviour
             Asteroid asteroid = (Asteroid)e.Key;
             GameObject tracer = e.Value as GameObject;
             if (asteroid.gameObject.activeSelf)
-                tracer.transform.position = Camera.main.WorldToScreenPoint(asteroid.transform.position);
+                tracer.transform.position = Camera.main.WorldToScreenPoint(asteroid.transform.position);               
             else
             {
                 list.Add(asteroid.gameObject);
@@ -76,7 +76,7 @@ public class ADM : MonoBehaviour
     }
     // Update is called once per frame
 
-    void Update()
+    void FixedUpdate()
     {
         Detect();
         Trace();

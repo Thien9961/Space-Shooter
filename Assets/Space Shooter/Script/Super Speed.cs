@@ -9,6 +9,11 @@ public class SuperSpeed : PowerUp
     public bool invulnerable;
     public Ship user;
 
+    public void Init(Vector2 position,Ship user)
+    {
+        this.user = user;
+        transform.position= position;
+    }
     public override void EffectStart()
     {
         base.EffectStart();

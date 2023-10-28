@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010d5555f51fd5c42bd3b1497f5ad821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 5
+  maxHp: 20
   hp: 10
   onDeathSfx: {fileID: 0}
   onDeathVfx: {fileID: 0}
@@ -109,8 +109,10 @@ MonoBehaviour:
   poolIndex: 0
   powerUps:
   - {fileID: 8057161577092966209, guid: 5ae537d9cda0d1b4b81065952bf420c9, type: 3}
-  - {fileID: 665288707905045447, guid: 429c383bf9cd9484f91b3dd2711645b9, type: 3}
-  - {fileID: 3353808568030171555, guid: 81b48a779ddc63940b685cb8784a878a, type: 3}
+  - {fileID: 8057161577092966209, guid: 5ae537d9cda0d1b4b81065952bf420c9, type: 3}
+  - {fileID: 8057161577092966209, guid: 5ae537d9cda0d1b4b81065952bf420c9, type: 3}
+  - {fileID: 8057161577092966209, guid: 5ae537d9cda0d1b4b81065952bf420c9, type: 3}
+  - {fileID: 8057161577092966209, guid: 5ae537d9cda0d1b4b81065952bf420c9, type: 3}
 --- !u!82 &3250966754157089135
 AudioSource:
   m_ObjectHideFlags: 0

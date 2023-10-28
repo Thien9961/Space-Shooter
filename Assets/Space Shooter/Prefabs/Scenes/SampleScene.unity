@@ -591,11 +591,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd7a5fc2c39baaf48a09c45da26dc43a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnArea:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  areaScale: {x: 1, y: 1}
+  maxInterval: 4
+  minInterval: 2
   asteroidLimit: 50
   minAsteroid: 0
   maxAsteroid: 2
-  maxInterval: 4
-  minInterval: 2
   asteroidMaxTorque: 100
   asteroidSize: 3.5
   asteroidMaxVelocity: {x: 0.5, y: 0.5, z: 0.002}
@@ -2485,6 +2492,8 @@ MonoBehaviour:
   enviroment:
   - {fileID: 309077710}
   - {fileID: 2039611026}
+  lvlupInterval: 10
+  env_interval_descrease: 0.1
 --- !u!4 &1811299378
 Transform:
   m_ObjectHideFlags: 0
@@ -2623,7 +2632,7 @@ MonoBehaviour:
     _container: {fileID: 2039611027}
     _nonLazy: 0
   - _name: Mineral Bonus
-    _component: {fileID: 4254483659125463053, guid: 429c383bf9cd9484f91b3dd2711645b9, type: 3}
+    _component: {fileID: 4092803420428066443, guid: 429c383bf9cd9484f91b3dd2711645b9, type: 3}
     _count: 0
     _container: {fileID: 609257271}
     _nonLazy: 0
@@ -2638,7 +2647,7 @@ MonoBehaviour:
     _container: {fileID: 609257271}
     _nonLazy: 0
   - _name: Spilt
-    _component: {fileID: 145243153510404126, guid: b2beb61f079cb484ab52c283e8a372e8, type: 3}
+    _component: {fileID: 516492431571129327, guid: 81b48a779ddc63940b685cb8784a878a, type: 3}
     _count: 0
     _container: {fileID: 609257271}
     _nonLazy: 0
@@ -2944,8 +2953,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828209ca36cc7e94fb2f1a9d81eba7e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnArea:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  areaScale: {x: 0.33, y: 0.33}
+  maxInterval: 10
+  minInterval: 5
   objectPool: 0300000005000000
-  spawnInterval: 10
   cloudSize: 10
 --- !u!4 &2039611027
 Transform:

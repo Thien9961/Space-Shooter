@@ -3,19 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using Utility;
 
 public class AsteroidField : Enviroment
 {
     public int asteroidLimit, minAsteroid,maxAsteroid;
-    public float maxInterval,minInterval, asteroidMaxTorque, asteroidSize;
+    public float asteroidMaxTorque, asteroidSize;
     public Vector3 asteroidMaxVelocity;
     public static Transform asteroidContainer;
     public int[] objectPool;
     public AsteroidField[] encounter;
+
     // Start is called before the first frame update
     protected override void Start()
     {
-        base.Start();    
+        
+        base.Start();
+        Draw.Rec(spawnArea, Color.red);
         if(asteroidContainer== null)
             asteroidContainer = GetComponent<Transform>();
         foreach(AsteroidField field in encounter)
@@ -37,14 +41,13 @@ public class AsteroidField : Enviroment
     }
     public override IEnumerator NaturalSpawn()
     {
-        yield return new WaitForSeconds(Random.Range(minInterval, maxInterval));
+        yield return new WaitForSeconds(GameManager.env_interval_coefficent * Random.Range(minInterval, maxInterval));
         var max = Random.Range(minAsteroid, maxAsteroid);
         var count = 0;
         for (int i = 0; i < objectPool.Length; i++)
             foreach (Asteroid ast in GetActiveAsteroid())
                 if (ast.poolIndex == objectPool[i])
                     count++;
-        Debug.Log(name + count);
         if (count < asteroidLimit)
         {
             for (int i = 0; i < max; i++)
@@ -56,7 +59,7 @@ public class AsteroidField : Enviroment
                     Asteroid a = asteroidClone.GetComponent<Asteroid>();
                     a.poolIndex = objectPool[rng];
                     a.maxSize = asteroidSize;
-                    Vector2 v1 = GameManager.RandomLocInRect(screenBound);
+                    Vector2 v1 = GameManager.RandomLocInRect(spawnArea);
                     Vector2 v2 = Camera.main.ScreenToWorldPoint(new Vector3(v1.x, v1.y, 0));
                     Vector3 v3 = new Vector3(Random.Range(-asteroidMaxVelocity.x, asteroidMaxVelocity.x), Random.Range(-asteroidMaxVelocity.y, asteroidMaxVelocity.y), Random.Range(-asteroidMaxVelocity.z, asteroidMaxVelocity.z));
                     a.IntialState(v2, v3, Random.Range(-asteroidMaxTorque, asteroidMaxTorque), Vector3.zero,a.maxHp,Color.white);

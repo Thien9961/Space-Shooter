@@ -9,11 +9,14 @@ using UnityEngine.Purchasing;
 public class GameManager : MonoBehaviour
 {
     public static Ship player;
-    public static int mineral=1000;
+    public static int mineral = 1000,level;
     public static Shop shop;
     public Enviroment[] enviroment;
     public static EdgeCollider2D screenBound;
     public static GameManager manager;
+    public static float env_interval_coefficent;
+    public float lvlupInterval, env_interval_descrease;//percent decrease
+
 
     public static Vector2 RandomLocInRect(Rect r) 
     {
@@ -38,11 +41,36 @@ public class GameManager : MonoBehaviour
                 e.gameObject.SetActive(enable);
     }
 
+    public void LevelUp()
+    {
+        if (env_interval_coefficent > 0)
+        {
+            env_interval_coefficent = 1 - Mathf.Clamp01(env_interval_descrease) * level;
+            env_interval_coefficent = Mathf.Clamp(env_interval_coefficent, 0.01f, Mathf.Infinity);
+            level++;
+        }
+        else
+            CancelInvoke(nameof(LevelUp));
+ 
+    }
+
+    public static void Begin()
+    {
+        if (manager.lvlupInterval > 0)
+            manager.InvokeRepeating(nameof(LevelUp), 0, manager.lvlupInterval);
+        player = Instantiate(shop.ship[Shop.selected], GameObject.Find("Canvas").transform).GetComponent<Ship>();
+        player.weapon.owner = player;
+        manager.SpawnEnable(true);
+        shop.Display(false);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        env_interval_coefficent = 1;
+        level = 0;
         manager=GetComponent<GameManager>();
-        if(GameObject.Find("Canvas").transform.Find("Shop").TryGetComponent<Shop>(out Shop s))
+        if(GameObject.Find("Canvas").transform.Find("Shop").TryGetComponent(out Shop s))
         {
             shop = s;
             shop.Display(true);

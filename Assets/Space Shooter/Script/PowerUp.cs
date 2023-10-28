@@ -14,32 +14,31 @@ public class PowerUp : MonoBehaviour
 {
     public float lifeSpan=Mathf.Infinity, travelTime=3,appearChance=100;
     public bool autoCollect, hover;
-    public Path2D path;
     public int poolIndex;
     // Start is called before the first frame update
-    void OnEnable()
+
+    public virtual void Init(Vector2 screenPos)
     {
-        if(autoCollect)
-        {
-            Invoke(nameof(EffectStart),Time.fixedDeltaTime);
-            GetComponent<Image>().color = new Color(0, 0, 0, 0);
-        }   
+        transform.position = screenPos;
+    }
+
+    public virtual void Begin()
+    {
+        if (autoCollect)
+            EffectStart();
         else
         {
-            Debug.Log(autoCollect);
-            Invoke(nameof(Flicker), 0.75f*lifeSpan);
+            Invoke(nameof(Flicker), 0.75f * lifeSpan);
             Invoke(nameof(Disappear), lifeSpan);
         }
         if (hover)
         {
-            Rect bound = GameObject.Find("Canvas").GetComponent<Canvas>().pixelRect;
-            Rect r = bound;
-            Rec.Expand(ref r, -GetComponent<RectTransform>().rect.width, -GetComponent<RectTransform>().rect.height);
-            Draw.Rec(r, Color.red);
-            path = new Path2D(Path2D.RandomInsideRect(r, 5));
+            Rect r = GameObject.Find("Canvas").GetComponent<Canvas>().pixelRect;
+            Draw.Rec(r, Color.green);
             Move();
         }
     }
+
 
     public void Flicker()
     {
@@ -49,7 +48,9 @@ public class PowerUp : MonoBehaviour
     public void Move()
     {       
         Invoke(nameof(Move), travelTime);
-        transform.DOLocalPath(Vec.Conv(path.waypoint), travelTime);
+        Vector3 v= Vec.RandomInRect(GameObject.Find("Canvas").GetComponent<Canvas>().pixelRect);
+        Debug.DrawLine(transform.position,v, Color.magenta,travelTime);
+        transform.DOMove(v, travelTime);
     }
 
     public virtual void EffectStart()

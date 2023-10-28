@@ -44,11 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd7a5fc2c39baaf48a09c45da26dc43a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnArea:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  areaScale: {x: 0.25, y: 0.25}
+  maxInterval: 45
+  minInterval: 30
   asteroidLimit: 1
   minAsteroid: 1
   maxAsteroid: 1
-  maxInterval: 2
-  minInterval: 1
   asteroidMaxTorque: 100
   asteroidSize: 3.5
   asteroidMaxVelocity: {x: 0.5, y: 0.5, z: 0.002}

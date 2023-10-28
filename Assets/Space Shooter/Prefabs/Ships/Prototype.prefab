@@ -170,7 +170,7 @@ MonoBehaviour:
   joystick: {fileID: 522033405262301244}
   hitVfx: {fileID: 3808996690835891124, guid: e2862027be994954eabd6b5a42eb9ade, type: 3}
   trigger: {fileID: 8092582702332756685}
-  owner: {fileID: 0}
+  owner: {fileID: 7228154583231030760}
   firingSfx: {fileID: 0}
   ready: 0
 --- !u!1 &5655112471116864531

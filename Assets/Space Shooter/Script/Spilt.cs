@@ -3,22 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using Redcode;
 using Utility;
+using UnityEditor.Experimental.GraphView;
 
 public class Spilt : PowerUp
 {
     // Start is called before the first frame update
     public int qty; 
     public FlyingObject[] fragment;
+    public FlyingObject originalObj;
+    public Vector3[] intialDistant;
+    public Vector2[] intialPos;
 
     public override void EffectStart()
     {
-        base.EffectStart();
         for(int i = 0; i < qty; i++)
         {
             int rng=Random.Range(0,fragment.Length);
-            FlyingObject f = fragment[rng].GetComponent<FlyingObject>();
-            Enviroment.pool.GetFromPool<Transform>(f.poolIndex);
-            f.IntialState(GetComponent<FlyingObject>().transform.position, Random.value * Vector3.one, 50, GetComponent<FlyingObject>().transform.localScale, f.maxHp, Color.white);
+            FlyingObject f = Enviroment.pool.GetFromPool<Transform>(fragment[rng].poolIndex).GetComponent<FlyingObject>();
+            f.maxSize = originalObj.maxSize;
+            f.IntialState(intialPos[i], Random.value*new Vector3(0.5f,0.5f,originalObj.speed), 100, intialDistant[i], f.maxHp, Color.white);
         }
+        base.EffectStart();
+    }
+
+    public void Init(Vector2 position, FlyingObject originalObject, Vector3[] fragments_initial_distance, Vector2[] fragments_initial_pos)
+    {
+        originalObj = originalObject;
+        intialDistant = fragments_initial_distance;
+        intialPos = fragments_initial_pos;     
     }
 }

@@ -21,7 +21,8 @@ public class Weapon : MonoBehaviour
     public int multishot=1;
     public Joystick joystick;
     public ParticleSystem hitVfx;
-    public GameObject trigger, owner;
+    public GameObject trigger;
+    public Ship owner;
     public AudioClip firingSfx;
     public bool ready;
 
@@ -45,7 +46,7 @@ public class Weapon : MonoBehaviour
                 {
                     Instantiate(hitVfx, hit, hitVfx.transform.rotation).transform.localScale=a.transform.localScale;
                     if(owner!=null)
-                        a.TakeDamage(owner,damage);
+                        a.TakeDamage(owner.gameObject,damage);
                     if (!d.Contains(a))
                         d.Add(a);
                 }         

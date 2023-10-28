@@ -172,7 +172,7 @@ MonoBehaviour:
   maxSize: 0
   poolIndex: 0
   powerUps:
-  - {fileID: 665288707905045447, guid: 429c383bf9cd9484f91b3dd2711645b9, type: 3}
+  - {fileID: 8057161577092966209, guid: 5ae537d9cda0d1b4b81065952bf420c9, type: 3}
   - {fileID: 8057161577092966209, guid: 5ae537d9cda0d1b4b81065952bf420c9, type: 3}
 --- !u!82 &7166877676379809266
 AudioSource:
