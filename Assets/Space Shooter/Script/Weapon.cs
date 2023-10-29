@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
@@ -79,6 +80,7 @@ public class Weapon : MonoBehaviour
         {
             ready = false;
             HitScan();
+            transform.DOPunchScale(transform.localScale*1.2f,cooldown*0.75f,10,0);
             BlinkCrosshair(Color.red, cooldown*0.95f);
             if(firingSfx != null)
                 GetComponent<AudioSource>().PlayOneShot(firingSfx);

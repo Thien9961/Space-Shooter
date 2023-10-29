@@ -23,15 +23,19 @@ public class Asteroid : FlyingObject
 
     public override void Death(GameObject killer)
     {
-        base.Death(killer);
-        if(killer!=null)
-            foreach(PowerUp p in powerUps)
+        GameManager.PlaySfx(onDeathSfx, transform.position);
+        AsteroidField.pool.TakeToPool(poolIndex, transform);
+        if (killer!=null)
+        {
+            if (onDeathVfx != null)
+                Instantiate(onDeathVfx, transform.position, onDeathVfx.transform.rotation).transform.localScale = transform.localScale;
+            foreach (PowerUp p in powerUps)
             {
-                if (Random.value*100 <= p.appearChance)
+                if (Random.value * 100 <= p.appearChance)
                 {
                     PowerUp pu = Enviroment.pool.GetFromPool<RectTransform>(p.poolIndex).GetComponent<PowerUp>();
-                    Vector2 v=Camera.main.WorldToScreenPoint(transform.position);
-                    Debug.Log("Screen pos:" +v);
+                    Vector2 v = Camera.main.WorldToScreenPoint(transform.position);
+                    Debug.Log("Screen pos:" + v);
                     if (pu.TryGetComponent(out MineralBonus mb) && killer.TryGetComponent(out Ship receipent))
                     {
                         mb.Init(v, killer.GetComponent<Ship>());
@@ -42,24 +46,25 @@ public class Asteroid : FlyingObject
                         ss.Init(v, killer.GetComponent<Ship>());
                         ss.Begin();
                     }
-                        
+
                     if (pu.TryGetComponent(out Spilt spilt))
                     {
-                        
+
                         Vector3[] arr1 = new Vector3[spilt.qty];
                         Vector2[] arr2 = new Vector2[spilt.qty];
                         for (int i = 0; i < arr1.Length; i++)
                         {
                             arr1[i] = transform.localScale;
-                            arr2[i] = Vec.RandomInCircle(new Circle(v,20));
+                            arr2[i] = Vec.RandomInCircle(new Circle(v, 20));
                         }
-                        spilt.Init(v, GetComponent<FlyingObject>(), arr1,arr2);
+                        spilt.Init(v, GetComponent<FlyingObject>(), arr1, arr2);
                         spilt.Begin();
                     }
-                        
+
                 }
-                
+
             }
-            
+        }
+
     }
 }

@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public static GameManager manager;
     public static float env_interval_coefficent;
     public float lvlupInterval, env_interval_descrease;//percent decrease
+    public bool devMode;
 
 
     public static Vector2 RandomLocInRect(Rect r) 
@@ -94,17 +95,24 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     public static void Save()
     {
-        SaveGame.Save<int>("mineral", mineral);
-        SaveGame.Save<int>("selected", Shop.selected);
-        foreach (Ship s in shop.ship)
-            SaveGame.Save<bool>(s.name, s.owned);       
+        if(!manager.devMode)
+        {
+            SaveGame.Save<int>("mineral", mineral);
+            SaveGame.Save<int>("selected", Shop.selected);
+            foreach (Ship s in shop.ship)
+                SaveGame.Save<bool>(s.name, s.owned);
+        }
+             
     }
 
     public static void Load()
     {
-        mineral = SaveGame.Load<int>("mineral");
-        Shop.selected = SaveGame.Load<int>("selected");
-        foreach (Ship s in shop.ship)
-            s.owned = SaveGame.Load<bool>(s.name);     
+        if (!manager.devMode)
+        {
+            mineral = SaveGame.Load<int>("mineral");
+            Shop.selected = SaveGame.Load<int>("selected");
+            foreach (Ship s in shop.ship)
+                s.owned = SaveGame.Load<bool>(s.name);
+        }
     }
 }

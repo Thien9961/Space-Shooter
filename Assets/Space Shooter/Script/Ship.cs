@@ -47,6 +47,8 @@ public class Ship : Destrucible
             t.position = Camera.main.WorldToScreenPoint(source.transform.position);
             t.GetComponent<Image>().raycastTarget = false;
             t.GetComponent<Image>().sprite = damagedSprite[Random.Range(0, damagedSprite.Length)];
+            t.GetComponent<RectTransform>().anchorMin= Vector2.zero;
+            t.GetComponent<RectTransform>().anchorMax = Vector2.one;
         }
         
     }

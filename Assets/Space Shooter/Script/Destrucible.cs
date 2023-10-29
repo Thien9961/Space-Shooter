@@ -25,7 +25,7 @@ public class Destrucible : MonoBehaviour
     {
         GameManager.PlaySfx(onDeathSfx,transform.position);
         if(onDeathVfx != null)
-            Instantiate(onDeathVfx, transform.position, onDeathVfx.transform.rotation);
+            Instantiate(onDeathVfx, transform.position, onDeathVfx.transform.rotation).transform.localScale=transform.localScale;
 
     }
 

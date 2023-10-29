@@ -606,7 +606,7 @@ MonoBehaviour:
   asteroidMaxTorque: 100
   asteroidSize: 3.5
   asteroidMaxVelocity: {x: 0.5, y: 0.5, z: 0.002}
-  objectPool: 00000000010000000200000004000000
+  objectPool: 010000000200000004000000
   encounter:
   - {fileID: 309838280584845374, guid: 2d8b1535e4d54b045b6529114c7054b8, type: 3}
 --- !u!4 &309077711
@@ -2335,6 +2335,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 363878599}
     m_Modifications:
+    - target: {fileID: 1832216770369170011, guid: a63f45d29a16ab740b1728179011785d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832216770369170011, guid: a63f45d29a16ab740b1728179011785d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832216770369170011, guid: a63f45d29a16ab740b1728179011785d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832216770369170011, guid: a63f45d29a16ab740b1728179011785d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832216770369170011, guid: a63f45d29a16ab740b1728179011785d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832216770369170011, guid: a63f45d29a16ab740b1728179011785d, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4632763462647393327, guid: a63f45d29a16ab740b1728179011785d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2447,6 +2471,26 @@ PrefabInstance:
       propertyPath: button.Array.data[2]
       value: 
       objectReference: {fileID: 276368868}
+    - target: {fileID: 7071722643806432427, guid: a63f45d29a16ab740b1728179011785d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 314683cca5e417b43924e07f86de60c9, type: 3}
+    - target: {fileID: 7071722643806432427, guid: a63f45d29a16ab740b1728179011785d, type: 3}
+      propertyPath: m_Color.b
+      value: 0.83921576
+      objectReference: {fileID: 0}
+    - target: {fileID: 7071722643806432427, guid: a63f45d29a16ab740b1728179011785d, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 7071722643806432427, guid: a63f45d29a16ab740b1728179011785d, type: 3}
+      propertyPath: m_Color.r
+      value: 0.07058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 7071722643806432427, guid: a63f45d29a16ab740b1728179011785d, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8419614122216871948, guid: a63f45d29a16ab740b1728179011785d, type: 3}
       propertyPath: m_Name
       value: Shop
@@ -2458,8 +2502,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2180633650048432610, guid: a63f45d29a16ab740b1728179011785d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1637299450}
   m_SourcePrefab: {fileID: 100100000, guid: a63f45d29a16ab740b1728179011785d, type: 3}
+--- !u!1 &1637299449 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2180633650048432610, guid: a63f45d29a16ab740b1728179011785d, type: 3}
+  m_PrefabInstance: {fileID: 1637299448}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1637299450
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637299449}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6f69432ae9185f64f97e828e0393b4ad, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1811299376
 GameObject:
   m_ObjectHideFlags: 0
@@ -2494,6 +2567,7 @@ MonoBehaviour:
   - {fileID: 2039611026}
   lvlupInterval: 10
   env_interval_descrease: 0.1
+  devMode: 1
 --- !u!4 &1811299378
 Transform:
   m_ObjectHideFlags: 0
@@ -2960,8 +3034,8 @@ MonoBehaviour:
     width: 0
     height: 0
   areaScale: {x: 0.33, y: 0.33}
-  maxInterval: 10
-  minInterval: 5
+  maxInterval: 60
+  minInterval: 20
   objectPool: 0300000005000000
   cloudSize: 10
 --- !u!4 &2039611027

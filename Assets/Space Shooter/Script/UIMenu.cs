@@ -60,6 +60,12 @@ public class UIMenu : MonoBehaviour
         i.color = color;
     }
 
+    public void SetAnimatorBool(string imageName,string paramName, bool b)
+    {
+        Image i = (Image)hashtable[imageName];
+        i.GetComponent<Animator>().SetBool(paramName, b);
+    }
+
     public void SetButtonText(string buttonName, string message)
     {
         Button b = (Button)hashtable[buttonName];  

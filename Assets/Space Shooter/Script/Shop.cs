@@ -40,13 +40,13 @@ public class Shop : UIMenu
         SetButtonAction("Previous Ship Button", PreviousShip);
         if (s.owned)
         {
-            SetObjectActive("Lock Image", false);
+            SetAnimatorBool("Lock Image", "isLocked", !s.owned);
             SetButtonText("Select Ship Button", "Play");
             SetButtonAction("Select Ship Button", s.Deploy);
         }   
         else
         {
-            SetObjectActive("Lock Image", true);
+            SetAnimatorBool("Lock Image", "isLocked", !s.owned);
             SetButtonText("Select Ship Button", "Unlock: " + s.price);
             SetButtonAction("Select Ship Button", Sell);
         }
@@ -62,7 +62,7 @@ public class Shop : UIMenu
                 SetText("Mineral Text", "Mineral: "+GameManager.mineral.ToString());
                 SetButtonAction("Select Ship Button", ship[selected].Deploy);
                 SetButtonText("Select Ship Button", "Play");
-                SetObjectActive("Lock Image", false);
+                SetAnimatorBool("Lock Image","isLocked", false);
                 GameManager.Save();
             }
             else

@@ -167,7 +167,7 @@ MonoBehaviour:
   maxHp: 10
   hp: 10
   onDeathSfx: {fileID: 0}
-  onDeathVfx: {fileID: 0}
+  onDeathVfx: {fileID: 3798848472592808055, guid: c2ad8f8a556a2294d8bf82970f58e3ee, type: 3}
   speed: 0
   maxSize: 0
   poolIndex: 0
