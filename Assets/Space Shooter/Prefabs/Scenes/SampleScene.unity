@@ -2445,7 +2445,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4661558190160642358, guid: a63f45d29a16ab740b1728179011785d, type: 3}
       propertyPath: ship.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4661558190160642358, guid: a63f45d29a16ab740b1728179011785d, type: 3}
       propertyPath: button.Array.size
@@ -2454,15 +2454,15 @@ PrefabInstance:
     - target: {fileID: 4661558190160642358, guid: a63f45d29a16ab740b1728179011785d, type: 3}
       propertyPath: ship.Array.data[0]
       value: 
-      objectReference: {fileID: 8433257351666081977, guid: 8214c397d9599c341b359e0c6b75cadc, type: 3}
+      objectReference: {fileID: 4693131803450232052, guid: ab69b92f2fe15d74590bb4d18f318fe6, type: 3}
     - target: {fileID: 4661558190160642358, guid: a63f45d29a16ab740b1728179011785d, type: 3}
       propertyPath: ship.Array.data[1]
       value: 
-      objectReference: {fileID: 574837962999756460, guid: b2ab5b4ba2126cd4499e8081a5acd9b4, type: 3}
+      objectReference: {fileID: 6840893864680885857, guid: e6332e9d15aefe34f92860bbb26aff1f, type: 3}
     - target: {fileID: 4661558190160642358, guid: a63f45d29a16ab740b1728179011785d, type: 3}
       propertyPath: ship.Array.data[2]
       value: 
-      objectReference: {fileID: 574837962999756460, guid: b2ab5b4ba2126cd4499e8081a5acd9b4, type: 3}
+      objectReference: {fileID: 74128823210864842, guid: d355d220a69d43a4f899b51616272b29, type: 3}
     - target: {fileID: 4661558190160642358, guid: a63f45d29a16ab740b1728179011785d, type: 3}
       propertyPath: button.Array.data[1]
       value: 
@@ -2565,7 +2565,7 @@ MonoBehaviour:
   enviroment:
   - {fileID: 309077710}
   - {fileID: 2039611026}
-  lvlupInterval: 10
+  lvlupInterval: 6
   env_interval_descrease: 0.1
   devMode: 1
 --- !u!4 &1811299378
@@ -2729,6 +2729,11 @@ MonoBehaviour:
     _component: {fileID: 7048093330085256693, guid: 231d017e8f81fe5478e43f2100811e7a, type: 3}
     _count: 0
     _container: {fileID: 309077711}
+    _nonLazy: 0
+  - _name: Shield
+    _component: {fileID: 7964794821091177118, guid: 7aee1dfee3022ad43be1fe51c24f7873, type: 3}
+    _count: 0
+    _container: {fileID: 609257271}
     _nonLazy: 0
 --- !u!4 &1830310888
 Transform:

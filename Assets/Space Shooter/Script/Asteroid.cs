@@ -8,7 +8,8 @@ using Utility;
 
 public class Asteroid : FlyingObject
 {
-    public PowerUp[] powerUps; 
+    public PowerUp[] powerUps;
+    public float damage;
     protected override void Move()
     {
         if (Mathf.Abs(transform.localScale.x) < maxSize)
@@ -16,7 +17,7 @@ public class Asteroid : FlyingObject
         else
         {     
             if (transform.parent.GetComponent<AsteroidField>().spawnArea.Contains(Camera.main.WorldToScreenPoint(transform.position)) && GameManager.player!=null)
-                GameManager.player.TakeDamage(gameObject,10);
+                GameManager.player.TakeDamage(gameObject,damage);
             Death(null);
         }     
     }
@@ -35,7 +36,6 @@ public class Asteroid : FlyingObject
                 {
                     PowerUp pu = Enviroment.pool.GetFromPool<RectTransform>(p.poolIndex).GetComponent<PowerUp>();
                     Vector2 v = Camera.main.WorldToScreenPoint(transform.position);
-                    Debug.Log("Screen pos:" + v);
                     if (pu.TryGetComponent(out MineralBonus mb) && killer.TryGetComponent(out Ship receipent))
                     {
                         mb.Init(v, killer.GetComponent<Ship>());
@@ -43,10 +43,14 @@ public class Asteroid : FlyingObject
                     }
                     if (pu.TryGetComponent(out SuperSpeed ss) && killer.TryGetComponent(out Ship user))
                     {
-                        ss.Init(v, killer.GetComponent<Ship>());
+                        ss.Init(v, user);
                         ss.Begin();
                     }
-
+                    if (pu.TryGetComponent(out Shield shield) && killer.TryGetComponent(out Ship target))
+                    {
+                        shield.Init(v,target);
+                        shield .Begin();
+                    }
                     if (pu.TryGetComponent(out Spilt spilt))
                     {
 

@@ -47,16 +47,19 @@ public class Ship : Destrucible
             t.position = Camera.main.WorldToScreenPoint(source.transform.position);
             t.GetComponent<Image>().raycastTarget = false;
             t.GetComponent<Image>().sprite = damagedSprite[Random.Range(0, damagedSprite.Length)];
-            t.GetComponent<RectTransform>().anchorMin= Vector2.zero;
+            t.GetComponent<RectTransform>().anchorMin = Vector2.zero;
             t.GetComponent<RectTransform>().anchorMax = Vector2.one;
         }
-        
+        else
+            Shield.shield.GetComponent<Animator>().SetTrigger("takeDmg");
     }
 
     // Update is called once per frame
     void Update()
     {
         HUD.SetText("Mineral Text", mineral.ToString());
+        //Debug.Log(GameObject.Find("Speed Effect(Clone)").GetComponent<ParticleSystem>().GetComponent<Renderer>().sortingOrder);
+        //Debug.Log(GameObject.Find("Speed Effect(Clone)").GetComponent<ParticleSystem>().GetComponent<ParticleSystemRenderer>().sortingOrder);
     }
 }
 

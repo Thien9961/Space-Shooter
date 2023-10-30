@@ -47,7 +47,6 @@ public class GameManager : MonoBehaviour
         if (env_interval_coefficent > 0)
         {
             env_interval_coefficent = 1 - Mathf.Clamp01(env_interval_descrease) * level;
-            env_interval_coefficent = Mathf.Clamp(env_interval_coefficent, 0.01f, Mathf.Infinity);
             level++;
         }
         else

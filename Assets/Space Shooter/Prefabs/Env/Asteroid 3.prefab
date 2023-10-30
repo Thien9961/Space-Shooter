@@ -172,8 +172,9 @@ MonoBehaviour:
   maxSize: 0
   poolIndex: 0
   powerUps:
-  - {fileID: 7227610714344493237, guid: b2beb61f079cb484ab52c283e8a372e8, type: 3}
+  - {fileID: 7250455259693757301, guid: 7aee1dfee3022ad43be1fe51c24f7873, type: 3}
   - {fileID: 1389137811926188050, guid: 429c383bf9cd9484f91b3dd2711645b9, type: 3}
+  damage: 20
 --- !u!82 &8738078838659992646
 AudioSource:
   m_ObjectHideFlags: 0

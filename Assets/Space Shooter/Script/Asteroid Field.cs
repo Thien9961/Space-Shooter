@@ -41,7 +41,7 @@ public class AsteroidField : Enviroment
     }
     public override IEnumerator NaturalSpawn()
     {
-        yield return new WaitForSeconds(GameManager.env_interval_coefficent * Random.Range(minInterval, maxInterval));
+        yield return new WaitForSeconds(Mathf.Clamp(GameManager.env_interval_coefficent,0.5f,Mathf.Infinity) * Random.Range(minInterval, maxInterval));
         var max = Random.Range(minAsteroid, maxAsteroid);
         var count = 0;
         for (int i = 0; i < objectPool.Length; i++)
@@ -59,6 +59,8 @@ public class AsteroidField : Enviroment
                     Asteroid a = asteroidClone.GetComponent<Asteroid>();
                     a.poolIndex = objectPool[rng];
                     a.maxSize = asteroidSize;
+                    a.GetComponent<SpriteRenderer>().sortingOrder = layerOrder;
+                    layerOrder--;
                     Vector2 v1 = GameManager.RandomLocInRect(spawnArea);
                     Vector2 v2 = Camera.main.ScreenToWorldPoint(new Vector3(v1.x, v1.y, 0));
                     Vector3 v3 = new Vector3(Random.Range(-asteroidMaxVelocity.x, asteroidMaxVelocity.x), Random.Range(-asteroidMaxVelocity.y, asteroidMaxVelocity.y), Random.Range(-asteroidMaxVelocity.z, asteroidMaxVelocity.z));

@@ -7,13 +7,13 @@ public class DAS : MonoBehaviour
 {
     public Image vfx;
     public AudioSource speaker;
-    public float hpThreshold;
+    public float hpThreshold;//percent 
 
     void Update()
     {
         if (TryGetComponent(out Ship s))
         {
-            if (s.hp < hpThreshold)
+            if (s.hp < hpThreshold*s.maxHp && !s.invulnerable)
             {
                 vfx.gameObject.SetActive(true);
                 if (speaker != null)

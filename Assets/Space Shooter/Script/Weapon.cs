@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class Weapon : MonoBehaviour
 {
     public string weaponName;
-    public float sensivity = 20, cooldown = 0.25f, damage = 1, spread=0;
+    public float sensivity = 20, cooldown = 1, damage = 1, spread=0;
     private float Spread
     {
         get { return spread; }
@@ -32,6 +32,7 @@ public class Weapon : MonoBehaviour
     void Start()
     {
         ready=true;
+        cooldown = Mathf.Clamp(cooldown, 0.1f, Mathf.Infinity);
         trigger.GetComponent<Btn>().action=new Btn.Action(Fire);
         GetComponent<Image>().raycastTarget = false;
     }
@@ -80,8 +81,8 @@ public class Weapon : MonoBehaviour
         {
             ready = false;
             HitScan();
-            transform.DOPunchScale(transform.localScale*1.2f,cooldown*0.75f,10,0);
-            BlinkCrosshair(Color.red, cooldown*0.95f);
+            transform.DOPunchScale(transform.localScale*1.33f,0.1f,10,0);
+            BlinkCrosshair(Color.red, 0.1f);
             if(firingSfx != null)
                 GetComponent<AudioSource>().PlayOneShot(firingSfx);
             StartCoroutine(coolingdown(cooldown));

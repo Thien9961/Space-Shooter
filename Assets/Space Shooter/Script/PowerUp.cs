@@ -55,6 +55,8 @@ public class PowerUp : MonoBehaviour
 
     public virtual void EffectStart()
     {
+        if(TryGetComponent(out AudioSource source))
+            source.Play();
         CancelInvoke();
         DOTween.Kill(transform);
         GetComponent<Animator>().enabled = false;

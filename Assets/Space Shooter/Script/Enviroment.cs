@@ -12,6 +12,7 @@ public class Enviroment : MonoBehaviour
     public Rect spawnArea;
     public Vector2 areaScale= Vector2.one;
     public float maxInterval, minInterval;
+    public static int layerOrder= 32767;
 
     // Start is called before the first frame update
 
@@ -21,6 +22,7 @@ public class Enviroment : MonoBehaviour
         Rec.Scale(ref spawnArea,areaScale.x,areaScale.y);
         pool = GameObject.Find("Pool Manager").GetComponent<PoolManager>();
         StartCoroutine(NaturalSpawn());
+        Debug.Log("Env_layerOrder: " + layerOrder);
     }
 
     public virtual IEnumerator NaturalSpawn()

@@ -29,7 +29,8 @@ public class DustCloud : Enviroment
             Vector2 v2 = Camera.main.ScreenToWorldPoint(new Vector3(v1.x, v1.y, 0));
             cloud.maxSize = cloudSize;
             cloud.dustCloud=GetComponent<DustCloud>();
-            cloud.GetComponent<SpriteRenderer>().sortingOrder = 100;
+            cloud.GetComponent<SpriteRenderer>().sortingOrder = layerOrder;
+            layerOrder--;
             cloud.IntialState(v2,Vector3.zero,0,Vector3.zero,cloud.maxHp,Color.white);
     }
 }
