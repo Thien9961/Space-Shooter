@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4526355110899671208}
   - component: {fileID: 7250455259693757301}
   m_Layer: 5
-  m_Name: Shield
+  m_Name: Protection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,6 +175,6 @@ MonoBehaviour:
   autoCollect: 0
   hover: 1
   poolIndex: 11
-  duration: 20
+  duration: 10
   target: {fileID: 0}
-  Vfx: {fileID: 5272674611543474334, guid: 9b2e375d15ddd4d489dca440e6bb534e, type: 3}
+  shield: {fileID: 5648409761698756434, guid: 9b2e375d15ddd4d489dca440e6bb534e, type: 3}

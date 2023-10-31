@@ -18,11 +18,13 @@ public class Ship : Destrucible
     public UIMenu HUD;
     public Weapon weapon;
     public Sprite[] damagedSprite;
+    public Shield shield;
 
     public void Deploy()
     {
         Camera.main.transform.rotation = Quaternion.Euler(0, 0, 0);
         GameManager.Begin();
+        GameManager.ToGame();
         if (GameObject.Find("Speed Effect(Clone)") ==null)
             Instantiate(Resources.Load<ParticleSystem>("Speed Effect"));
         mineral = 0;
@@ -50,8 +52,8 @@ public class Ship : Destrucible
             t.GetComponent<RectTransform>().anchorMin = Vector2.zero;
             t.GetComponent<RectTransform>().anchorMax = Vector2.one;
         }
-        else
-            Shield.shield.GetComponent<Animator>().SetTrigger("takeDmg");
+        else if (shield != null && HUD.transform.GetComponentInChildren<Shield>()!=null)
+            shield.TakeDamage();  
     }
 
     // Update is called once per frame

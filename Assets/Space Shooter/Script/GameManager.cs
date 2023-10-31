@@ -15,9 +15,24 @@ public class GameManager : MonoBehaviour
     public static EdgeCollider2D screenBound;
     public static GameManager manager;
     public static float env_interval_coefficent;
+    public static MusicPlayer musicManager;
     public float lvlupInterval, env_interval_descrease;//percent decrease
     public bool devMode;
 
+    public static void ToMenu()
+    {
+        musicManager.PlayAlbum("In Menu");
+    }
+
+    public static void ToShop()
+    {
+        musicManager.PlayAlbum("In Shop");
+    }
+
+    public static void ToGame()
+    {
+        musicManager.PlayAlbum("In Game");
+    }
 
     public static Vector2 RandomLocInRect(Rect r) 
     {
@@ -70,21 +85,15 @@ public class GameManager : MonoBehaviour
         env_interval_coefficent = 1;
         level = 0;
         manager=GetComponent<GameManager>();
-        if(GameObject.Find("Canvas").transform.Find("Shop").TryGetComponent(out Shop s))
+        musicManager= GameObject.Find("Music Manager").GetComponent<MusicPlayer>();
+        ToMenu();
+        if (GameObject.Find("Canvas").transform.Find("Shop").TryGetComponent(out Shop s))
         {
             shop = s;
             shop.Display(true);
         }      
-        screenBound = new GameObject("Screen Bound").AddComponent<EdgeCollider2D>();
-        screenBound.gameObject.layer = 5;
-        List<Vector2> points= new List<Vector2>(5);
-        Rect r= GameObject.Find("Canvas").GetComponent<Canvas>().pixelRect;
-        points.Add(new Vector2(r.xMin, r.yMin));
-        points.Add(new Vector2(r.xMin, r.yMax));
-        points.Add(new Vector2(r.xMax, r.yMax));
-        points.Add(new Vector2(r.xMax, r.yMin));
-        points.Add(new Vector2(r.xMin, r.yMin));
-        screenBound.SetPoints(points);
+
+
     }
 
     private void OnApplicationQuit()

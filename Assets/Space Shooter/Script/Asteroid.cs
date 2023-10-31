@@ -46,10 +46,10 @@ public class Asteroid : FlyingObject
                         ss.Init(v, user);
                         ss.Begin();
                     }
-                    if (pu.TryGetComponent(out Shield shield) && killer.TryGetComponent(out Ship target))
+                    if (pu.TryGetComponent(out Protection protection) && killer.TryGetComponent(out Ship target))
                     {
-                        shield.Init(v,target);
-                        shield .Begin();
+                        protection.Init(v,target);
+                        protection.Begin();
                     }
                     if (pu.TryGetComponent(out Spilt spilt))
                     {
