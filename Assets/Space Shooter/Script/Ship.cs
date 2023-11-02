@@ -24,7 +24,7 @@ public class Ship : Destrucible
     {
         Camera.main.transform.rotation = Quaternion.Euler(0, 0, 0);
         GameManager.Begin();
-        GameManager.ToGame();
+        UIManager.main.GameIO();
         if (GameObject.Find("Speed Effect(Clone)") ==null)
             Instantiate(Resources.Load<ParticleSystem>("Speed Effect"));
         mineral = 0;
@@ -56,12 +56,18 @@ public class Ship : Destrucible
             shield.TakeDamage();  
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddMineral(int amount)
     {
-        HUD.SetText("Mineral Text", mineral.ToString());
-        //Debug.Log(GameObject.Find("Speed Effect(Clone)").GetComponent<ParticleSystem>().GetComponent<Renderer>().sortingOrder);
-        //Debug.Log(GameObject.Find("Speed Effect(Clone)").GetComponent<ParticleSystem>().GetComponent<ParticleSystemRenderer>().sortingOrder);
+        mineral += amount;
+        HUD.SetText("Mineral Text", mineral.ToString().PadLeft(8, '0'));
+        TextMeshProUGUI t=(TextMeshProUGUI)HUD.hashtable["Mineral Text"];
+        if (DOTween.IsTweening(t.rectTransform))
+        {
+            DOTween.Kill(t.rectTransform);
+            t.rectTransform.rotation = Quaternion.Euler(0,0,0);
+        } 
+        t.transform.DOPunchScale(t.rectTransform.localScale * 1.1f, 0.2f, 10, 0);
+        t.transform.DOPunchRotation(new Vector3(0,0,40), 0.5f, 10, 0);
     }
 }
 

@@ -15,7 +15,10 @@ public class UIMenu : MonoBehaviour
     public Dropdown[] dropdown;
     public Image[] image;
 
-    protected virtual void Start()
+    /// <summary>
+    /// Initialize the menu, have to call this method manually at choosen time and before calling any method below.
+    /// </summary>
+    public virtual void Init()
     {
         foreach (var item in text)
             hashtable.Add(item.name, item);
@@ -60,9 +63,9 @@ public class UIMenu : MonoBehaviour
         i.color = color;
     }
 
-    public void SetAnimatorBool(string imageName,string paramName, bool b)
+    public void SetAnimatorBool(string objectName,string paramName, bool b)
     {
-        Image i = (Image)hashtable[imageName];
+        Image i = (Image)hashtable[objectName];
         i.GetComponent<Animator>().SetBool(paramName, b);
     }
 

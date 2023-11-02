@@ -8,15 +8,15 @@ using TMPro;
 public class Shop : UIMenu
 {
     public Ship[] ship;
+    public UIMenu popup;
     public static int selected = 0;
-
     public void NextShip()
     {
         if (selected + 1 < ship.Length)
             selected++;
         else
             selected = 0;
-        Display(true);
+        Preset();
         GameManager.Save();
     }
 
@@ -26,8 +26,14 @@ public class Shop : UIMenu
             selected--;
         else
             selected=ship.Length-1;
-        Display(true);
+        Preset();
         GameManager.Save();
+    }
+
+    private void Awake()
+    {
+        popup.Init();
+        popup.SetButtonAction("Button", () => { popup.SetAnimatorBool("Pop-up", "active", false); });
     }
     public override void Preset()
     {
@@ -35,18 +41,16 @@ public class Shop : UIMenu
         SetText("Ship Name Text", s.name);
         SetText("Mineral Text", "Mineral: "+GameManager.mineral.ToString());
         SetText("Ship Stat Text", "HP: "+s.hp+"\nDamage: "+s.weapon.damage);
-        SetImage("Ship Image", s.GetComponent<UnityEngine.UI.Image>());
+        SetImage("Ship Image", s.GetComponent<Image>());
         SetButtonAction("Next Ship Button", NextShip);
         SetButtonAction("Previous Ship Button", PreviousShip);
         if (s.owned)
         {
-            SetAnimatorBool("Lock Image", "isLocked", !s.owned);
             SetButtonText("Select Ship Button", "Play");
             SetButtonAction("Select Ship Button", s.Deploy);
         }   
         else
         {
-            SetAnimatorBool("Lock Image", "isLocked", !s.owned);
             SetButtonText("Select Ship Button", "Unlock: " + s.price);
             SetButtonAction("Select Ship Button", Sell);
         }
@@ -67,12 +71,18 @@ public class Shop : UIMenu
             }
             else
             {
-                GUI.Window(GetInstanceID(),new Rect(0,0,100,100),PopupMessage,"Not enough mineral");
+                popup.SetText("Message", "Not enough mineral.");
+                popup.Display(true);
             }
     }
-    public void PopupMessage(int windowID)
+
+    private void Update()
     {
-        GUI.DragWindow(new Rect(0, 0, 10000, 10000));
+        Ship s = ship[selected];
+        if (s.owned)
+            SetAnimatorBool("Lock Image", "isLocked", !s.owned);
+        else
+            SetAnimatorBool("Lock Image", "isLocked", !s.owned);
     }
 }
 

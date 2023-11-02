@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 {
     public static Ship player;
     public static int mineral = 1000,level;
-    public static Shop shop;
+    public Shop shop;
     public Enviroment[] enviroment;
     public static EdgeCollider2D screenBound;
     public static GameManager manager;
@@ -18,21 +18,6 @@ public class GameManager : MonoBehaviour
     public static MusicPlayer musicManager;
     public float lvlupInterval, env_interval_descrease;//percent decrease
     public bool devMode;
-
-    public static void ToMenu()
-    {
-        musicManager.PlayAlbum("In Menu");
-    }
-
-    public static void ToShop()
-    {
-        musicManager.PlayAlbum("In Shop");
-    }
-
-    public static void ToGame()
-    {
-        musicManager.PlayAlbum("In Game");
-    }
 
     public static Vector2 RandomLocInRect(Rect r) 
     {
@@ -73,10 +58,12 @@ public class GameManager : MonoBehaviour
     {
         if (manager.lvlupInterval > 0)
             manager.InvokeRepeating(nameof(LevelUp), 0, manager.lvlupInterval);
-        player = Instantiate(shop.ship[Shop.selected], GameObject.Find("Canvas").transform).GetComponent<Ship>();
+        player = Instantiate(manager.shop.ship[Shop.selected], GameObject.Find("Canvas").transform).GetComponent<Ship>();
+        player.HUD.Init();
         player.weapon.owner = player;
+        player.HUD.SetText("Mineral Text",player.mineral.ToString().PadLeft(8,'0'));
         manager.SpawnEnable(true);
-        shop.Display(false);
+        manager.shop.Display(false);
     }
 
     // Start is called before the first frame update
@@ -86,14 +73,6 @@ public class GameManager : MonoBehaviour
         level = 0;
         manager=GetComponent<GameManager>();
         musicManager= GameObject.Find("Music Manager").GetComponent<MusicPlayer>();
-        ToMenu();
-        if (GameObject.Find("Canvas").transform.Find("Shop").TryGetComponent(out Shop s))
-        {
-            shop = s;
-            shop.Display(true);
-        }      
-
-
     }
 
     private void OnApplicationQuit()
@@ -107,7 +86,7 @@ public class GameManager : MonoBehaviour
         {
             SaveGame.Save<int>("mineral", mineral);
             SaveGame.Save<int>("selected", Shop.selected);
-            foreach (Ship s in shop.ship)
+            foreach (Ship s in manager.shop.ship)
                 SaveGame.Save<bool>(s.name, s.owned);
         }
              
@@ -119,7 +98,7 @@ public class GameManager : MonoBehaviour
         {
             mineral = SaveGame.Load<int>("mineral");
             Shop.selected = SaveGame.Load<int>("selected");
-            foreach (Ship s in shop.ship)
+            foreach (Ship s in manager.shop.ship)
                 s.owned = SaveGame.Load<bool>(s.name);
         }
     }
