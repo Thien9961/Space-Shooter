@@ -89,5 +89,10 @@ public class UIMenu : MonoBehaviour
         i.sprite = image.sprite;
     }
 
+    public void SetSprite(string imageName, Sprite sprite)
+    {
+        Image i = (Image)hashtable[imageName];
+        i.sprite = sprite;
+    }
 }
 
