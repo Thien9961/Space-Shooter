@@ -34,6 +34,7 @@ public class Ship : Destrucible
         base.Death(killer);
         GameManager.mineral += mineral;
         GameManager.Save();
+        UIManager.main.gameOver.gameObject.SetActive(true);
         Destroy(gameObject);
         GameObject.Find("Ads Manager").GetComponent<InterstitialAdExample>().ShowAd();
     }
@@ -43,7 +44,10 @@ public class Ship : Destrucible
         if (!invulnerable)
         {
             base.TakeDamage(source, amount);
-            Camera.main.transform.DOShakePosition(1, 0.5f, 10);
+            Camera.main.transform.DOShakePosition(1, 0.5f, Random.Range(10,15));
+            Toggle toggle=(Toggle)UIManager.main.hashtable["Viberation"];
+            if (toggle.isOn)
+                Vibration.Vibrate(500);
             Transform t = new GameObject("Crack", typeof(Image)).transform;
             t.SetParent(gameObject.transform);
             t.position = Camera.main.WorldToScreenPoint(source.transform.position);

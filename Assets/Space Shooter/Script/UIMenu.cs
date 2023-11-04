@@ -94,5 +94,12 @@ public class UIMenu : MonoBehaviour
         Image i = (Image)hashtable[imageName];
         i.sprite = sprite;
     }
+
+    public virtual void SetSliderAction(string sliderName, UnityEngine.Events.UnityAction<float> action)
+    {
+        Slider s = (Slider)hashtable[sliderName];
+        s.onValueChanged.RemoveAllListeners();
+        s.onValueChanged.AddListener(action);
+    }
 }
 

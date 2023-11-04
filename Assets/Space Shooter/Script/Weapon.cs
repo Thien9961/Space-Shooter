@@ -9,7 +9,8 @@ using UnityEngine.UI;
 public class Weapon : MonoBehaviour
 {
     public string weaponName;
-    public float sensivity = 20, cooldown = 1, damage = 1, spread=0;
+    public float  cooldown = 1, damage = 1, spread=0;
+    public static float sensivity = 20;
     private float Spread
     {
         get { return spread; }
@@ -91,9 +92,10 @@ public class Weapon : MonoBehaviour
     }
     public void Aim()
     {
+        Slider s = (Slider)UIManager.main.hashtable["Joystick Sensitivity"];
         Canvas canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        float x = Mathf.Clamp( transform.position.x+joystick.Horizontal * sensivity,canvas.pixelRect.xMin,canvas.pixelRect.xMax);
-        float y = Mathf.Clamp(transform.position.y+joystick.Vertical * sensivity,canvas.pixelRect.yMin, canvas.pixelRect.yMax);
+        float x = Mathf.Clamp( transform.position.x+joystick.Horizontal * s.value,canvas.pixelRect.xMin,canvas.pixelRect.xMax);
+        float y = Mathf.Clamp(transform.position.y+joystick.Vertical * s.value,canvas.pixelRect.yMin, canvas.pixelRect.yMax);
         Vector2 v = new Vector2(x, y);
         transform.position = v;
     }

@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class EventCallback : MonoBehaviour
 {
-    public void Kill()
+    public virtual void Kill()
     {
         Destroy(gameObject);
     }
 
-    public void Hide()
+    public virtual void Hide()
     {
         gameObject.SetActive(false);
     }
 
-    public void Unhide()
+    public virtual void Unhide()
     {
         gameObject.SetActive(true);
     }
-    public void Birth()
+    public virtual void Birth()
     {
         
     }

@@ -10,13 +10,14 @@ public class UIManager : UIMenu
 {
     public Shop shop;
     public static UIManager main;
-    public UIMenu setting, info, policy,eula;
-    public Image background;
+    public UIMenu setting, info, policy,eula,gameOver;
     public string appURL;
 
 
     public override void Preset()
     {
+        //UnityAction<float> set_joystick_sens = (value) => { Weapon.sensivity = value; };
+        SetBackground("menu_bg",Color.white);
         SetButtonAction("Play Button", ShopIO);
         SetButtonAction("Setting Button", SettingIO);
         SetButtonAction("Privacy Button", PrivacyIO);
@@ -28,7 +29,8 @@ public class UIManager : UIMenu
         SetButtonAction("Exit Privacy", PrivacyIO);
         SetButtonAction("Lisence Button", EULAIO);
         SetButtonAction("Exit EULA", EULAIO);
-        background.sprite = Resources.Load<Sprite>("menu_bg");
+        //SetSliderAction("Joystick Sensitivity", set_joystick_sens);
+        
     }
 
     private void Awake()
@@ -38,7 +40,19 @@ public class UIManager : UIMenu
         shop.Init();
         setting.Init();
         info.Init();
+        gameOver.Init();
+        gameOver.SetButtonAction("Button", () => { gameOver.SetAnimatorBool("Game Over", "active", false); });
+        gameOver.SetButtonAction("Continue", () => { gameOver.SetAnimatorBool("Game Over", "active", false); });
+        gameOver.SetButtonAction("Back to menu", () => { gameOver.SetAnimatorBool("Game Over", "active", false); });
         Preset();
+    }
+
+    public void SetBackground(string spritePath,Color color)
+    {
+        Image background = (Image)hashtable["Background"];
+        background.sprite = Resources.Load<Sprite>(spritePath);
+        background.color=color;
+        background.raycastTarget = false;
     }
 
     public override void SetButtonAction(string buttonName, UnityAction action)
@@ -48,18 +62,19 @@ public class UIManager : UIMenu
     }
 
     public void ShopIO()
-    {
+    {  
         shop.Display(!shop.gameObject.activeSelf);
         gameObject.SetActive(!gameObject.activeSelf);
         if (shop.gameObject.activeSelf)
         {
-            background.sprite = Resources.Load<Sprite>("shop_bg");
+            SetBackground("shop_bg",Color.white);
             GameManager.musicManager.PlayAlbum("In Shop");
         } 
         else
         {
+            gameObject.SetActive(true);
             GameManager.musicManager.PlayAlbum("In Menu");
-            background.sprite= Resources.Load<Sprite>("menu_bg");
+            SetBackground("menu_bg", Color.white);
         }
             
     }
@@ -68,33 +83,31 @@ public class UIManager : UIMenu
     {
         setting.gameObject.SetActive(!setting.gameObject.activeSelf);
         gameObject.SetActive(!gameObject.activeSelf);
-        background.sprite = Resources.Load<Sprite>("menu_bg");
+        SetBackground("menu_bg", Color.white);
     }
 
 
-    public void ToMenu()
-    {
-        GameManager.musicManager.PlayAlbum("In Menu");
-    }
 
-
-    public void GameIO()
+    public void GameIO() 
     {
         GameManager.musicManager.PlayAlbum("In Game");
+        shop.Display(false);
+        SetBackground("shop_bg", Color.clear);
+        gameObject.SetActive(false);
     }
 
     public void PrivacyIO()
     {
         policy.gameObject.SetActive(!policy.gameObject.activeSelf);
         gameObject.SetActive(!gameObject.activeSelf);
-        background.sprite = Resources.Load<Sprite>("menu_bg");
+        SetBackground("menu_bg", Color.white);
     }
 
     public void EULAIO()
     {
+        SetBackground("menu_bg", Color.white);
         eula.gameObject.SetActive(!eula.gameObject.activeSelf);
         gameObject.SetActive(!gameObject.activeSelf);
-        background.sprite = Resources.Load<Sprite>("menu_bg");
     }
 
     public void ToRating()
@@ -106,6 +119,6 @@ public class UIManager : UIMenu
     {
         info.gameObject.SetActive(!info.gameObject.activeSelf);
         gameObject.SetActive(!gameObject.activeSelf);
-        background.sprite = Resources.Load<Sprite>("menu_bg");
+        SetBackground("menu_bg", Color.white);
     }
 }

@@ -27,8 +27,8 @@ public class MusicPlayer : MonoBehaviour
     {
         MusicPlayer mp = transform.Find(name).GetComponent<MusicPlayer>();
         mp.speaker = speaker;
-        mp.Play(0);
-        mp.track.ForEach(MPDebug);
+        mp.AutoPlay();
+        //mp.track.ForEach(MPDebug);
     }
     public void Play(int index)
     {

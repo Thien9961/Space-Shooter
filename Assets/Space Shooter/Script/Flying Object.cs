@@ -18,7 +18,7 @@ public class FlyingObject : Destrucible
     public override void Death(GameObject killer)
     {
         base.Death(killer);
-        AsteroidField.pool.TakeToPool(poolIndex,transform);
+        Enviroment.pool.TakeToPool(poolIndex,transform);
     }
 
     public virtual void IntialState(Vector2 position, Vector3 velocity, float torque, Vector3 distance,float hp, Color color)

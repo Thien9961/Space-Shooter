@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Purchasing;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
 
     public static void Begin()
     {
+        Reset();
         if (manager.lvlupInterval > 0)
             manager.InvokeRepeating(nameof(LevelUp), 0, manager.lvlupInterval);
         player = Instantiate(manager.shop.ship[Shop.selected], GameObject.Find("Canvas").transform).GetComponent<Ship>();
@@ -63,16 +65,22 @@ public class GameManager : MonoBehaviour
         player.weapon.owner = player;
         player.HUD.SetText("Mineral Text",player.mineral.ToString().PadLeft(8,'0'));
         manager.SpawnEnable(true);
-        manager.shop.Display(false);
+    }
+
+    public static void Reset()
+    {
+       Enviroment.ClearAll();
+       manager.CancelInvoke(nameof(LevelUp));
+       env_interval_coefficent = 1;
+       level = 0;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        env_interval_coefficent = 1;
-        level = 0;
         manager=GetComponent<GameManager>();
         musicManager= GameObject.Find("Music Manager").GetComponent<MusicPlayer>();
+        musicManager.PlayAlbum("In Menu");
     }
 
     private void OnApplicationQuit()
@@ -84,10 +92,13 @@ public class GameManager : MonoBehaviour
     {
         if(!manager.devMode)
         {
-            SaveGame.Save<int>("mineral", mineral);
-            SaveGame.Save<int>("selected", Shop.selected);
+            Slider s1 = (Slider)UIManager.main.hashtable["Volume"], s2= (Slider)UIManager.main.hashtable["Joystick Sensitivity"];
+            SaveGame.Save("voloume", s1.value);
+            SaveGame.Save("sensitivity", s2.value);
+            SaveGame.Save("mineral", mineral);
+            SaveGame.Save("selected", Shop.selected);
             foreach (Ship s in manager.shop.ship)
-                SaveGame.Save<bool>(s.name, s.owned);
+                SaveGame.Save(s.name, s.owned);
         }
              
     }
@@ -96,6 +107,9 @@ public class GameManager : MonoBehaviour
     {
         if (!manager.devMode)
         {
+            Slider s1 = (Slider)UIManager.main.hashtable["Volume"], s2 = (Slider)UIManager.main.hashtable["Joystick Sensitivity"];
+            s1.value=SaveGame.Load<float>("voloume");
+            s2.value=SaveGame.Load<float>("sensitivity");
             mineral = SaveGame.Load<int>("mineral");
             Shop.selected = SaveGame.Load<int>("selected");
             foreach (Ship s in manager.shop.ship)
