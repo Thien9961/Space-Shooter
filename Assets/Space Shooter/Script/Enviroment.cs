@@ -37,7 +37,6 @@ public class Enviroment : MonoBehaviour
                 select g;
         foreach (GameObject go in v)
         {
-            Debug.Log(go.name);
             for (int i = 0; i < go.transform.childCount; i++)
             {
                 Transform child = go.transform.GetChild(i);

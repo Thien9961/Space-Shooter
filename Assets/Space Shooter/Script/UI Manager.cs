@@ -35,16 +35,19 @@ public class UIManager : UIMenu
 
     private void Awake()
     {
+        Init();
         main = GetComponent<UIManager>();
-        main.Init();
         shop.Init();
         setting.Init();
         info.Init();
         gameOver.Init();
         gameOver.SetButtonAction("Button", () => { gameOver.SetAnimatorBool("Game Over", "active", false); });
-        gameOver.SetButtonAction("Continue", () => { gameOver.SetAnimatorBool("Game Over", "active", false); });
+        gameOver.SetButtonAction("Double", () => { gameOver.SetAnimatorBool("Game Over", "active", false); GameObject.Find("Ads Manager").GetComponent<InterstitialAdExample>().ShowAd(); });
         gameOver.SetButtonAction("Back to menu", () => { gameOver.SetAnimatorBool("Game Over", "active", false); });
         Preset();
+        Slider s = (Slider)hashtable["Volume"];
+        s.onValueChanged.AddListener((val) => { AudioListener.volume = val; });
+
     }
 
     public void SetBackground(string spritePath,Color color)
@@ -112,7 +115,8 @@ public class UIManager : UIMenu
 
     public void ToRating()
     {
-        Debug.Log(appURL);
+        if (appURL != null)
+            Application.OpenURL(appURL);
     }
 
     public void InfoIO()

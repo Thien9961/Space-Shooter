@@ -548,16 +548,14 @@ MonoBehaviour:
   onDeathSfx: {fileID: 0}
   onDeathVfx: {fileID: 0}
   speed: 0.004
-  owned: 0
+  owned: 1
   invulnerable: 0
   price: 1000
   mineral: 0
   HUD: {fileID: 5229820920312786521}
   weapon: {fileID: 7290347084707829822}
   damagedSprite:
-  - {fileID: 21300000, guid: 7f34589c8a4c3524ea01588e42ad51e8, type: 3}
-  - {fileID: 21300000, guid: ec8ecae5bd1ccbc4aadfdbfed1ac034c, type: 3}
-  - {fileID: 21300000, guid: b0e998efdd0db0240895462cffe1ed1c, type: 3}
+  - {fileID: 21300000, guid: 21e49bdda7d713843bbad1c940f84308, type: 3}
   shield: {fileID: 0}
 --- !u!222 &3537640317901123829
 CanvasRenderer:
@@ -587,7 +585,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c4f8a01fad80ab74f8e250b688d74a55, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9731eae082186de439e5f70163f17d35, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

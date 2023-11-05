@@ -7,14 +7,16 @@ using UnityEngine.UI;
 public class GameOverCallback : EventCallback
 {
     public List<Button> button;
+    public UIMenu rewardNotice;
     int _index;
-    public delegate void ButtonClickEventHandler<T>(T sender);
 
     private void Awake()
     {
         button[0].onClick.AddListener(SetAction0);
         button[1].onClick.AddListener(SetAction1);
         button[2].onClick.AddListener(SetAction2);
+        rewardNotice.Init();
+        rewardNotice.SetButtonAction("OK", () => { rewardNotice.SetAnimatorBool("Reward Notice", "active", false); Reward(); }) ;
     }
 
     public void SetAction0()
@@ -48,7 +50,7 @@ public class GameOverCallback : EventCallback
                 }
             case 2:
                 {
-                    Continue();
+                    Double();
                     break;
                 }
 
@@ -61,11 +63,13 @@ public class GameOverCallback : EventCallback
         UIManager.main.ShopIO();
     }
 
-    void Continue()
+    void Double()
     {
-        Hide();
-        UIManager.main.shop.ship[Shop.selected].GetComponent<Ship>().Deploy();
+        rewardNotice.SetText("Message", "+" + GameManager.extraMineral);
+        rewardNotice.gameObject.SetActive(true);
+        Restart();
     }
+
 
     void ToMenu()
     {
@@ -75,5 +79,4 @@ public class GameOverCallback : EventCallback
         UIManager.main.SetBackground("menu_bg", Color.white);
     }
     // Create a generic delegate for the button click event.
-
 }

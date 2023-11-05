@@ -40,7 +40,7 @@ public class Shop : UIMenu
         Ship s = ship[selected];
         SetText("Ship Name Text", s.name);
         SetText("Mineral Text", "Mineral: "+GameManager.mineral.ToString());
-        SetText("Ship Stat Text", "HP: "+s.hp+"\nDamage: "+s.weapon.damage);
+        SetText("Ship Stat Text", s.GetInfo());
         SetImage("Ship Image", s.GetComponent<Image>());
         SetButtonAction("Next Ship Button", NextShip);
         SetButtonAction("Previous Ship Button", PreviousShip);
@@ -56,6 +56,8 @@ public class Shop : UIMenu
         }
             
     }
+
+    
 
     public void Sell()
     {

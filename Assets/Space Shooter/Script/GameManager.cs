@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static Ship player;
-    public static int mineral = 1000,level;
+    public static int mineral = 1000,level,extraMineral;
     public Shop shop;
     public Enviroment[] enviroment;
     public static EdgeCollider2D screenBound;
@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
        manager.CancelInvoke(nameof(LevelUp));
        env_interval_coefficent = 1;
        level = 0;
+       extraMineral = 0;
     }
 
     // Start is called before the first frame update

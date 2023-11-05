@@ -486,17 +486,21 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  slider: []
-  toggle: []
+  slider:
+  - {fileID: 0}
+  - {fileID: 0}
+  toggle:
+  - {fileID: 0}
   dropdown: []
-  image: []
+  image:
+  - {fileID: 0}
   shop: {fileID: 0}
   setting: {fileID: 0}
   info: {fileID: 0}
   policy: {fileID: 0}
   eula: {fileID: 0}
-  background: {fileID: 0}
-  appURL: 
+  gameOver: {fileID: 0}
+  appURL: https://unity.com/legal/licenses/unity-companion-license
 --- !u!1 &3910888649106968330
 GameObject:
   m_ObjectHideFlags: 0

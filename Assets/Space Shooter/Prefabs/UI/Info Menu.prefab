@@ -303,7 +303,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Credits
+  m_text: Info
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7e5ff2b651bb1d745b47be900e541396, type: 2}
   m_sharedMaterial: {fileID: -5653504420161190785, guid: 7e5ff2b651bb1d745b47be900e541396, type: 2}
@@ -753,23 +753,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Credits
-
-
-    Developer
-
-
-    Tran Huy Thien
-
-
-    Special Thanks
-
-
-    [List
-    of any free resources you used]
-
-    This game was created by Tran Huy Thien
-    using free resources. No additional credit is required.'
+  m_text: "Made by\n\nTran Huy Thien\n\nCopyright \xA9 2014 Unity Technology\r\n\r\nLicensed
+    under the Unity Companion License\r\n\r\nhttps://unity.com/legal/licenses/unity-companion-license\n\r\n**Asteroid
+    Shooter**"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7e5ff2b651bb1d745b47be900e541396, type: 2}
   m_sharedMaterial: {fileID: -5653504420161190785, guid: 7e5ff2b651bb1d745b47be900e541396, type: 2}

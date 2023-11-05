@@ -22,4 +22,13 @@ public class EventCallback : MonoBehaviour
     {
         
     }
+
+    public void Reward()
+    {
+        Hide();
+        GameManager.mineral += GameManager.extraMineral;
+        GameManager.manager.shop.Preset();
+        GameManager.Save();
+        GameManager.extraMineral = 0;
+    }
 }
