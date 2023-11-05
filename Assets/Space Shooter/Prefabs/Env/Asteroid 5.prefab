@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010d5555f51fd5c42bd3b1497f5ad821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 5
+  maxHp: 50
   hp: 10
   onDeathSfx: {fileID: 0}
   onDeathVfx: {fileID: 3798848472592808055, guid: c2ad8f8a556a2294d8bf82970f58e3ee, type: 3}
@@ -173,8 +173,8 @@ MonoBehaviour:
   poolIndex: 0
   powerUps:
   - {fileID: 8057161577092966209, guid: 5ae537d9cda0d1b4b81065952bf420c9, type: 3}
-  - {fileID: 8057161577092966209, guid: 5ae537d9cda0d1b4b81065952bf420c9, type: 3}
-  damage: 10
+  - {fileID: 1389137811926188050, guid: 429c383bf9cd9484f91b3dd2711645b9, type: 3}
+  damage: 4
 --- !u!82 &7166877676379809266
 AudioSource:
   m_ObjectHideFlags: 0

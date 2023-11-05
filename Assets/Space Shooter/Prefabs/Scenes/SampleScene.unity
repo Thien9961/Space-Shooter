@@ -368,11 +368,11 @@ MonoBehaviour:
     width: 0
     height: 0
   areaScale: {x: 1, y: 1}
-  maxInterval: 4
-  minInterval: 2
+  maxInterval: 6
+  minInterval: 3
   asteroidLimit: 50
   minAsteroid: 0
-  maxAsteroid: 2
+  maxAsteroid: 4
   asteroidMaxTorque: 100
   asteroidSize: 3.5
   asteroidMaxVelocity: {x: 0.5, y: 0.5, z: 0.002}

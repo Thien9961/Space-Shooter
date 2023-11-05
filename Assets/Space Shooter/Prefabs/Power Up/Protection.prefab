@@ -169,9 +169,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64c2ed99633041b4ea6cfc85828a35c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeSpan: 10
+  lifeSpan: 18
   travelTime: 2.5
-  appearChance: 100
+  appearChance: 5
   autoCollect: 0
   hover: 1
   poolIndex: 11

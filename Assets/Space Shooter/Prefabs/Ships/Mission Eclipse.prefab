@@ -373,7 +373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: 
   cooldown: 0.2
-  damage: 1
+  damage: 4
   spread: 40
   multishot: 8
   joystick: {fileID: 8757241428608655334}
@@ -643,8 +643,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -740,14 +740,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab55bc9528a659848bf3c1508072c427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 150
+  maxHp: 60
   hp: 100
   onDeathSfx: {fileID: 0}
   onDeathVfx: {fileID: 0}
   speed: 0.004
-  owned: 0
+  owned: 1
   invulnerable: 0
-  price: 2000
+  price: 7500
   mineral: 0
   HUD: {fileID: 7005246752312469906}
   weapon: {fileID: 3989838956114689958}

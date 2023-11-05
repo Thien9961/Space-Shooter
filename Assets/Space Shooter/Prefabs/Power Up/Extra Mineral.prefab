@@ -143,9 +143,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeSpan: 10
   travelTime: 2.5
-  appearChance: 100
+  appearChance: 25
   autoCollect: 0
   hover: 1
   poolIndex: 7
   recipient: {fileID: 0}
-  amount: 5
+  amount: 15

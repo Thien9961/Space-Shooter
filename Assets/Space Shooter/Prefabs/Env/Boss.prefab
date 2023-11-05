@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010d5555f51fd5c42bd3b1497f5ad821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 20
+  maxHp: 600
   hp: 10
   onDeathSfx: {fileID: 0}
   onDeathVfx: {fileID: 3798848472592808055, guid: c2ad8f8a556a2294d8bf82970f58e3ee, type: 3}
@@ -113,6 +113,14 @@ MonoBehaviour:
   - {fileID: 8057161577092966209, guid: 5ae537d9cda0d1b4b81065952bf420c9, type: 3}
   - {fileID: 8057161577092966209, guid: 5ae537d9cda0d1b4b81065952bf420c9, type: 3}
   - {fileID: 8057161577092966209, guid: 5ae537d9cda0d1b4b81065952bf420c9, type: 3}
+  - {fileID: 8057161577092966209, guid: 5ae537d9cda0d1b4b81065952bf420c9, type: 3}
+  - {fileID: 8057161577092966209, guid: 5ae537d9cda0d1b4b81065952bf420c9, type: 3}
+  - {fileID: 8057161577092966209, guid: 5ae537d9cda0d1b4b81065952bf420c9, type: 3}
+  - {fileID: 8057161577092966209, guid: 5ae537d9cda0d1b4b81065952bf420c9, type: 3}
+  - {fileID: 8057161577092966209, guid: 5ae537d9cda0d1b4b81065952bf420c9, type: 3}
+  - {fileID: 8057161577092966209, guid: 5ae537d9cda0d1b4b81065952bf420c9, type: 3}
+  - {fileID: 7250455259693757301, guid: 7aee1dfee3022ad43be1fe51c24f7873, type: 3}
+  - {fileID: 7250455259693757301, guid: 7aee1dfee3022ad43be1fe51c24f7873, type: 3}
   - {fileID: 7250455259693757301, guid: 7aee1dfee3022ad43be1fe51c24f7873, type: 3}
   damage: 30
 --- !u!82 &3250966754157089135

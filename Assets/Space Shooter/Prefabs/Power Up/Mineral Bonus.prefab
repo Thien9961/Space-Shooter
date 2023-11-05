@@ -55,7 +55,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeSpan: 0
   travelTime: 0
-  appearChance: 100
+  appearChance: 50
   autoCollect: 1
   hover: 0
   poolIndex: 6

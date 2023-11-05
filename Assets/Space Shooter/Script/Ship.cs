@@ -75,6 +75,7 @@ public class Ship : Destrucible
         {
             DOTween.Kill(t.rectTransform);
             t.rectTransform.rotation = Quaternion.Euler(0,0,0);
+            t.rectTransform.localScale = Vector3.one;
         } 
         t.transform.DOPunchScale(t.rectTransform.localScale * 1.1f, 0.2f, 10, 0);
         t.transform.DOPunchRotation(new Vector3(0,0,40), 0.5f, 10, 0);
