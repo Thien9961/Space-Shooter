@@ -42,7 +42,7 @@ public class UIManager : UIMenu
         info.Init();
         gameOver.Init();
         gameOver.SetButtonAction("Button", () => { gameOver.SetAnimatorBool("Game Over", "active", false); });
-        gameOver.SetButtonAction("Double", () => { gameOver.SetAnimatorBool("Game Over", "active", false); GameObject.Find("Ads Manager").GetComponent<InterstitialAdExample>().ShowAd(); });
+        gameOver.SetButtonAction("Double", () => { gameOver.SetAnimatorBool("Game Over", "active", false); /*GameObject.Find("Ads Manager").GetComponent<InterstitialAdExample>().ShowAd();*/ });
         gameOver.SetButtonAction("Back to menu", () => { gameOver.SetAnimatorBool("Game Over", "active", false); });
         Preset();
         Slider s = (Slider)hashtable["Volume"];

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.51104665, g: 0.51751065, b: 0.54482555, a: 1}
+  m_IndirectSpecularColor: {r: 0.5110493, g: 0.51751745, b: 0.5448456, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1285,7 +1285,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1817883671}
   - component: {fileID: 1817883670}
-  - component: {fileID: 1817883669}
   m_Layer: 0
   m_Name: Ads Manager
   m_TagString: Untagged
@@ -1293,20 +1292,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1817883669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1817883668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd2fa521ff6be5c4fa4bbdb50413be6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _androidAdUnitId: Interstitial_Android
-  _iOsAdUnitId: Interstitial_iOS
 --- !u!114 &1817883670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1322,6 +1307,7 @@ MonoBehaviour:
   _androidGameId: 5447341
   _iOSGameId: 5447340
   _testMode: 1
+  _gameId: 
 --- !u!4 &1817883671
 Transform:
   m_ObjectHideFlags: 0

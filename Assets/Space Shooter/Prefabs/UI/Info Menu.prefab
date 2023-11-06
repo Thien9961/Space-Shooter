@@ -517,7 +517,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.047043327}
-  m_SizeDelta: {x: 0, y: 300}
+  m_SizeDelta: {x: 0, y: 420}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &2816956862995026517
 GameObject:
@@ -753,9 +753,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Made by\n\nTran Huy Thien\n\nCopyright \xA9 2014 Unity Technology\r\n\r\nLicensed
-    under the Unity Companion License\r\n\r\nhttps://unity.com/legal/licenses/unity-companion-license\n\r\n**Asteroid
-    Shooter**"
+  m_text: "Made by\r\n\r\nTran Huy Thien\r\n\r\nPowered by\r\n\r\nAI Image Generator
+    from Hotpot.ai\r\n\r\nCopyright \xA9 2014 Unity Technology\r\n\r\nLicensed under
+    the Unity Companion License\r\n\r\nhttps://unity.com/legal/licenses/unity-companion-license\r\n\r\nAsteroid
+    Shooter"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7e5ff2b651bb1d745b47be900e541396, type: 2}
   m_sharedMaterial: {fileID: -5653504420161190785, guid: 7e5ff2b651bb1d745b47be900e541396, type: 2}
@@ -788,7 +789,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
