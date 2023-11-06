@@ -1,14 +1,7 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.Assertions;
 using UnityEngine.UI;
-using static BayatGames.SaveGameFree.Examples.ExampleSaveCustom;
 
 public class Ship : Destrucible
 {

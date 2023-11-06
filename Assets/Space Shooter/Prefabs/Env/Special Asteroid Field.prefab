@@ -56,7 +56,7 @@ MonoBehaviour:
   asteroidLimit: 1
   minAsteroid: 1
   maxAsteroid: 1
-  asteroidMaxTorque: 100
+  asteroidMaxTorque: 10
   asteroidSize: 3.5
   asteroidMaxVelocity: {x: 0.5, y: 0.5, z: 0.002}
   objectPool: 0a000000

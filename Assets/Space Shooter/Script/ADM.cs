@@ -20,13 +20,6 @@ public class ADM : MonoBehaviour
         
     }
 
-    public bool Detectable(Asteroid a)
-    {
-        foreach (Asteroid asteroid in data)
-            if (PrefabUtility.GetPrefabType(a) == PrefabUtility.GetPrefabType(asteroid))
-                return true;
-        return false;
-    }
     public Hashtable Detect()
     {
         GameObject canvas = GameObject.Find("Canvas");

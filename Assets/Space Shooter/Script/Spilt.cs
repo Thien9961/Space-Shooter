@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using Redcode;
-using Utility;
-using UnityEditor.Experimental.GraphView;
 
 public class Spilt : PowerUp
 {

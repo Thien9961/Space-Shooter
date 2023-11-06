@@ -1,13 +1,5 @@
 using DG.Tweening;
-using Redcode.Pools;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using Utility;
 
 public class PowerUp : MonoBehaviour

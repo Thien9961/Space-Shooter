@@ -1,11 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Redcode.Pools;
 using System.Linq;
 using Utility;
 using UnityEngine.SceneManagement;
-using UnityEditor.Animations;
 
 public class Enviroment : MonoBehaviour
 {
