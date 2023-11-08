@@ -7,7 +7,7 @@ public class Destrucible : MonoBehaviour
     public float maxHp;
     [HideInInspector] public float hp;
     public AudioClip onDeathSfx;
-    public ParticleSystem onDeathVfx;
+    public readonly int vfxPool=13;//Death vfx pool index
 
     public virtual void TakeDamage(GameObject source, float amount) 
     {
@@ -24,12 +24,13 @@ public class Destrucible : MonoBehaviour
     public virtual void Death(GameObject killer)
     {
         GameManager.PlaySfx(onDeathSfx,transform.position);
-        if(onDeathVfx != null)
+        if(killer!=null)
         {
-            ParticleSystem p = Instantiate(onDeathVfx, transform.position, onDeathVfx.transform.rotation);
+            ParticleSystem p = Enviroment.pool.GetFromPool<Transform>(vfxPool).GetComponent<ParticleSystem>();
             p.transform.localScale = transform.localScale;
-        }
-
+            p.transform.position = transform.position;
+            p.Play();
+        } 
     }
 
 }

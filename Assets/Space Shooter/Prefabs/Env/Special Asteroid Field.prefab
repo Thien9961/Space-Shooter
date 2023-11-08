@@ -51,12 +51,12 @@ MonoBehaviour:
     width: 0
     height: 0
   areaScale: {x: 0.25, y: 0.25}
-  maxInterval: 45
-  minInterval: 30
+  maxInterval: 60
+  minInterval: 40
   asteroidLimit: 1
   minAsteroid: 1
   maxAsteroid: 1
-  asteroidMaxTorque: 10
+  asteroidMaxTorque: 20
   asteroidSize: 3.5
   asteroidMaxVelocity: {x: 0.5, y: 0.5, z: 0.002}
   objectPool: 0a000000

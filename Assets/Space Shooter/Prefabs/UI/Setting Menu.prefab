@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 1883708892561430719}
   - component: {fileID: 2927743461950991439}
   m_Layer: 5
-  m_Name: Music Volume (1)
+  m_Name: Joystick Sensitivity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,9 +243,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 630245291937070276}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 20
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1176,7 +1176,7 @@ GameObject:
   - component: {fileID: 4926120485783252372}
   - component: {fileID: 5164527306460631892}
   m_Layer: 5
-  m_Name: Music Volume
+  m_Name: Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1268,7 +1268,7 @@ GameObject:
   - component: {fileID: 9007824434908079464}
   - component: {fileID: 6221456545522877781}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: Viberation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1732,7 +1732,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Viberation
+  m_text: Vibration
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7e5ff2b651bb1d745b47be900e541396, type: 2}
   m_sharedMaterial: {fileID: -5653504420161190785, guid: 7e5ff2b651bb1d745b47be900e541396, type: 2}

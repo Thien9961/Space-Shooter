@@ -1,8 +1,6 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,9 +18,9 @@ public class Weapon : MonoBehaviour
             
         }
     }
-    public int multishot=1;
+    public int multishot = 1;
+    public readonly int particlePool=12;
     public Joystick joystick;
-    public ParticleSystem hitVfx;
     public GameObject trigger;
     public Ship owner;
     public AudioClip firingSfx;
@@ -47,8 +45,10 @@ public class Weapon : MonoBehaviour
             foreach(Asteroid a in AsteroidField.GetActiveAsteroid())
                 if(a.GetComponent<Collider2D>().bounds.Contains(hit))
                 {
-                    Instantiate(hitVfx, hit, hitVfx.transform.rotation).transform.localScale=a.transform.localScale;
-                    if(owner!=null)
+                    ParticleSystem p = Enviroment.pool.GetFromPool<Transform>(particlePool).GetComponent<ParticleSystem>();
+                    p.transform.position = hit;
+                    p.Play();
+                    if (owner!=null)
                         a.TakeDamage(owner.gameObject,damage);
                     if (!d.Contains(a))
                         d.Add(a);

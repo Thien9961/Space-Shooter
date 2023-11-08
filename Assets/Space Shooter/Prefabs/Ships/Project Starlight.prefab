@@ -546,7 +546,6 @@ MonoBehaviour:
   maxHp: 60
   hp: 100
   onDeathSfx: {fileID: 0}
-  onDeathVfx: {fileID: 0}
   speed: 0.004
   owned: 1
   invulnerable: 0
@@ -815,13 +814,12 @@ MonoBehaviour:
   weaponName: 
   cooldown: 0.1
   damage: 12
-  spread: 2
+  spread: 25
   multishot: 1
   joystick: {fileID: 4432561513818307741}
-  hitVfx: {fileID: 3808996690835891124, guid: e2862027be994954eabd6b5a42eb9ade, type: 3}
   trigger: {fileID: 1221021678247653018}
   owner: {fileID: 4693131803450232052}
-  firingSfx: {fileID: 8300000, guid: 947719fd38845824ba3638af9d8e4e54, type: 3}
+  firingSfx: {fileID: 8300000, guid: 08f78eba48bb21c44ac5a74ca84efc83, type: 3}
   ready: 0
 --- !u!82 &6638099360376060335
 AudioSource:

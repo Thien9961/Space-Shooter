@@ -31,4 +31,13 @@ public class EventCallback : MonoBehaviour
         GameManager.Save();
         GameManager.extraMineral = 0;
     }
+
+    private void OnParticleSystemStopped()
+    {
+        if(tag=="Death VFX")
+            Enviroment.pool.TakeToPool(13, transform);
+        else
+            Enviroment.pool.TakeToPool(12, transform);
+        Debug.Log(tag);
+    }
 }

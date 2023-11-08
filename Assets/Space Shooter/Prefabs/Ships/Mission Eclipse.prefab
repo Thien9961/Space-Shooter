@@ -376,6 +376,7 @@ MonoBehaviour:
   damage: 4
   spread: 40
   multishot: 8
+  particlePool: 12
   joystick: {fileID: 8757241428608655334}
   hitVfx: {fileID: 3808996690835891124, guid: e2862027be994954eabd6b5a42eb9ade, type: 3}
   trigger: {fileID: 4402949595731920942}
@@ -782,7 +783,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9c85acf95f904fd479f36a25bc647fd9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c4f8a01fad80ab74f8e250b688d74a55, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
