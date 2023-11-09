@@ -21,10 +21,8 @@ public class Asteroid : FlyingObject
     public override void Death(GameObject killer)
     {
         base.Death(killer);
-        GameManager.PlaySfx(onDeathSfx, transform.position);
-        AsteroidField.pool.TakeToPool(poolIndex, transform);
         if (killer!=null)
-        {
+        {       
             foreach (PowerUp p in powerUps)
             {
                 if (Random.value * 100 <= p.appearChance)

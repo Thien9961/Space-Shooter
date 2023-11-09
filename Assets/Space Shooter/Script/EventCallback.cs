@@ -34,10 +34,9 @@ public class EventCallback : MonoBehaviour
 
     private void OnParticleSystemStopped()
     {
-        if(tag=="Death VFX")
-            Enviroment.pool.TakeToPool(13, transform);
-        else
+        if(name=="Explosion(Clone)")
             Enviroment.pool.TakeToPool(12, transform);
-        Debug.Log(tag);
+        else
+            Enviroment.pool.TakeToPool(13, transform);
     }
 }

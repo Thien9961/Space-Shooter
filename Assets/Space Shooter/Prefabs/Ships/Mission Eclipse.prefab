@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1010, y: 560}
+  m_SizeDelta: {x: 1000, y: 550}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3764275685716217310
 CanvasRenderer:
@@ -376,9 +376,7 @@ MonoBehaviour:
   damage: 4
   spread: 40
   multishot: 8
-  particlePool: 12
   joystick: {fileID: 8757241428608655334}
-  hitVfx: {fileID: 3808996690835891124, guid: e2862027be994954eabd6b5a42eb9ade, type: 3}
   trigger: {fileID: 4402949595731920942}
   owner: {fileID: 74128823210864842}
   firingSfx: {fileID: 8300000, guid: 947719fd38845824ba3638af9d8e4e54, type: 3}
@@ -744,7 +742,6 @@ MonoBehaviour:
   maxHp: 60
   hp: 100
   onDeathSfx: {fileID: 0}
-  onDeathVfx: {fileID: 0}
   speed: 0.004
   owned: 1
   invulnerable: 0

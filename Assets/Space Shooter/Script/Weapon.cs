@@ -47,6 +47,7 @@ public class Weapon : MonoBehaviour
                 {
                     ParticleSystem p = Enviroment.pool.GetFromPool<Transform>(particlePool).GetComponent<ParticleSystem>();
                     p.transform.position = hit;
+                    p.transform.localScale = a.transform.localScale;
                     p.Play();
                     if (owner!=null)
                         a.TakeDamage(owner.gameObject,damage);
