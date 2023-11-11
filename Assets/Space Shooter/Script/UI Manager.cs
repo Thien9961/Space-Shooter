@@ -30,16 +30,17 @@ public class UIManager : UIMenu
         SetButtonAction("Lisence Button", EULAIO);
         SetButtonAction("Exit EULA", EULAIO);
         //SetSliderAction("Joystick Sensitivity", set_joystick_sens);
-        
     }
 
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
         Init();
         main = GetComponent<UIManager>();
         shop.Init();
         setting.Init();
         info.Init();
+        gameOver.playSfx = playSfx;
         gameOver.Init();
         gameOver.SetButtonAction("Button", () => { gameOver.SetAnimatorBool("Game Over", "active", false); });
         gameOver.SetButtonAction("Double", () => { gameOver.SetAnimatorBool("Game Over", "active", false); /*GameObject.Find("Ads Manager").GetComponent<InterstitialAdExample>().ShowAd();*/ });
@@ -56,12 +57,6 @@ public class UIManager : UIMenu
         background.sprite = Resources.Load<Sprite>(spritePath);
         background.color=color;
         background.raycastTarget = false;
-    }
-
-    public override void SetButtonAction(string buttonName, UnityAction action)
-    {
-        Button b = (Button)hashtable[buttonName];
-        b.onClick.AddListener(action);
     }
 
     public void ShopIO()

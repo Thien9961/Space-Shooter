@@ -22,16 +22,6 @@ public class GameManager : MonoBehaviour
         return new Vector2(x,y);
     }
 
-    public static void PlaySfx(AudioClip clip,Vector2 pos)
-    {
-        if (clip != null)
-        {
-            GameObject g =new GameObject(clip.name);
-            g.transform.position = pos;
-            g.AddComponent<AudioSource>().PlayOneShot(clip);            
-        }
-    }
-
     public void SpawnEnable(bool enable)
     {
         foreach(Enviroment e in enviroment)

@@ -494,6 +494,7 @@ MonoBehaviour:
   dropdown: []
   image:
   - {fileID: 0}
+  clickSfx: {fileID: 8300000, guid: 20cb9da9b1e674c2dadbeff749c8fc14, type: 3}
   shop: {fileID: 0}
   setting: {fileID: 0}
   info: {fileID: 0}

@@ -64,6 +64,7 @@ MonoBehaviour:
   dropdown: []
   image:
   - {fileID: 5003780354401954233}
+  clickSfx: {fileID: 0}
 --- !u!222 &2439901890060613199
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -547,7 +548,7 @@ MonoBehaviour:
   hp: 100
   onDeathSfx: {fileID: 0}
   speed: 0.004
-  owned: 1
+  owned: 0
   invulnerable: 0
   price: 1000
   mineral: 0
@@ -632,10 +633,10 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8421923792035139392}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 2e73fdaea138c3d48a78d06c97d92d32, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

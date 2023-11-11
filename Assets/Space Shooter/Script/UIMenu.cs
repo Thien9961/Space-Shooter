@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class UIMenu : MonoBehaviour
@@ -14,10 +15,15 @@ public class UIMenu : MonoBehaviour
     public Toggle[] toggle;
     public Dropdown[] dropdown;
     public Image[] image;
+    public AudioClip clickSfx;
+
+    public UnityAction playSfx;
+
 
     /// <summary>
     /// Initialize the menu, have to call this method manually at choosen time and before calling any method below.
     /// </summary>
+
     public virtual void Init()
     {
         foreach (var item in text)
@@ -37,6 +43,17 @@ public class UIMenu : MonoBehaviour
     public virtual void Preset()
     {
 
+    }
+
+    public void OnEnable()
+    {
+        if (TryGetComponent(out AudioSource s))
+            s.Play();
+    }
+
+    public virtual void Awake()
+    {
+        playSfx = () => { AudioSource.PlayClipAtPoint(clickSfx, Camera.main.transform.position); }; 
     }
 
     public virtual void Display(bool display)
@@ -76,11 +93,11 @@ public class UIMenu : MonoBehaviour
             b.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = message;
     }
 
-    public virtual void SetButtonAction(string buttonName, UnityEngine.Events.UnityAction action)
+    public virtual void SetButtonAction(string buttonName, UnityAction action)
     {
         Button b = (Button)hashtable[buttonName];
-        b.onClick.RemoveAllListeners();
         b.onClick.AddListener(action);
+        b.onClick.AddListener(playSfx);
     }
 
     public void SetImage(string imageName, Image image)

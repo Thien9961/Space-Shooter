@@ -236,7 +236,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.047043327}
-  m_SizeDelta: {x: 0, y: 800}
+  m_SizeDelta: {x: 0, y: 700}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &4924701194725449026
 GameObject:
@@ -598,6 +598,7 @@ GameObject:
   - component: {fileID: 170718182133061914}
   - component: {fileID: 5678464658099043250}
   - component: {fileID: 7438800262671392006}
+  - component: {fileID: -7439105190619164243}
   m_Layer: 5
   m_Name: Policy
   m_TagString: Untagged
@@ -646,6 +647,7 @@ MonoBehaviour:
   toggle: []
   dropdown: []
   image: []
+  clickSfx: {fileID: 8300000, guid: 20cb9da9b1e674c2dadbeff749c8fc14, type: 3}
 --- !u!95 &170718182133061914
 Animator:
   serializedVersion: 5
@@ -687,6 +689,102 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83772c98761fdd46b04b4d8639981c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &-7439105190619164243
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8101157835937627718}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 84526fd995a20401fa0c0fccf653c5e2, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 495.0495
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8523604943842528670
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,19 +988,15 @@ MonoBehaviour:
   m_text: 'Privacy Policy
 
 
-
     Introduction
-
 
 
     This Privacy Policy describes
     how Asteroid Shooter collects, uses, and shares your data when you use our app.
 
 
-
     Data
     Collection
-
 
 
     We do not collect any personal information from you. This includes
@@ -912,15 +1006,12 @@ MonoBehaviour:
     Changes to this Policy
 
 
-
     We
     may update this Policy from time to time. We will notify you of any changes by
     adding them to patch notes.
 
 
-
     Contact Us
-
 
 
     If you have any questions

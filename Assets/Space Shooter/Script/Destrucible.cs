@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class Destrucible : MonoBehaviour
 {
@@ -23,8 +24,9 @@ public class Destrucible : MonoBehaviour
 
     public virtual void Death(GameObject killer)
     {
-        GameManager.PlaySfx(onDeathSfx,transform.position);
-        if(killer!=null)
+        if (onDeathSfx != null)
+            AudioSource.PlayClipAtPoint(onDeathSfx,transform.position);
+        if (killer!=null)
         {
             ParticleSystem p = Enviroment.pool.GetFromPool<Transform>(vfxPool).GetComponent<ParticleSystem>();
             p.transform.localScale = transform.localScale;

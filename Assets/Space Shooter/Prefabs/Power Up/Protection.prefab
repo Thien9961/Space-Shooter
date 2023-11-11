@@ -175,6 +175,7 @@ MonoBehaviour:
   autoCollect: 0
   hover: 1
   poolIndex: 11
+  collectSfx: {fileID: 8300000, guid: 68378f764d6b3426fb75496eeb422abb, type: 3}
   duration: 10
   target: {fileID: 0}
   shield: {fileID: 5648409761698756434, guid: 9b2e375d15ddd4d489dca440e6bb534e, type: 3}

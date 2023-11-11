@@ -7,6 +7,7 @@ public class PowerUp : MonoBehaviour
     public float lifeSpan=Mathf.Infinity, travelTime=3,appearChance=100;
     public bool autoCollect, hover;
     public int poolIndex;
+    public AudioClip collectSfx;
     // Start is called before the first frame update
 
     public virtual void Init(Vector2 screenPos)
@@ -47,8 +48,8 @@ public class PowerUp : MonoBehaviour
 
     public virtual void EffectStart()
     {
-        if(TryGetComponent(out AudioSource source))
-            source.Play();
+        if(collectSfx != null)
+            AudioSource.PlayClipAtPoint(collectSfx,Camera.main.ScreenToWorldPoint(transform.position));
         CancelInvoke();
         DOTween.Kill(transform);
         GetComponent<Animator>().enabled = false;
