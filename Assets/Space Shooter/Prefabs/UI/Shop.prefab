@@ -1766,7 +1766,7 @@ MonoBehaviour:
   - {fileID: 7071722643806432427}
   clickSfx: {fileID: 8300000, guid: 20cb9da9b1e674c2dadbeff749c8fc14, type: 3}
   ship:
-  - {fileID: 4693131803450232052, guid: ab69b92f2fe15d74590bb4d18f318fe6, type: 3}
+  - {fileID: 451492856315427624, guid: ab69b92f2fe15d74590bb4d18f318fe6, type: 3}
   - {fileID: 74128823210864842, guid: d355d220a69d43a4f899b51616272b29, type: 3}
   popup: {fileID: 0}
 --- !u!95 &1392366777979809822

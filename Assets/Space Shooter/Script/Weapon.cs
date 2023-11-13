@@ -23,7 +23,6 @@ public class Weapon : MonoBehaviour
     public Joystick joystick;
     public GameObject trigger;
     public Ship owner;
-    public AudioClip firingSfx;
     public bool ready;
 
 
@@ -85,8 +84,6 @@ public class Weapon : MonoBehaviour
             HitScan();
             transform.DOPunchScale(transform.localScale*1.33f,0.1f,10,0);
             BlinkCrosshair(Color.red, 0.1f);
-            if(firingSfx != null)
-                GetComponent<AudioSource>().PlayOneShot(firingSfx);
             StartCoroutine(coolingdown(cooldown));
         }
         

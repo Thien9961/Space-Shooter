@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 30
   hp: 10
-  onDeathSfx: {fileID: 8300000, guid: fc96116dc3c141440aabb5605744fea2, type: 3}
+  onDeathSfx: {fileID: 0}
   speed: 0
   maxSize: 0
   poolIndex: 0
@@ -188,10 +188,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 495.0495
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0

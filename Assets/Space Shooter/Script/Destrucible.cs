@@ -1,13 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class Destrucible : MonoBehaviour
 {
     public float maxHp;
     [HideInInspector] public float hp;
-    public AudioClip onDeathSfx;
     public readonly int vfxPool=13;//Death vfx pool index
 
     public virtual void TakeDamage(GameObject source, float amount) 
@@ -24,8 +20,6 @@ public class Destrucible : MonoBehaviour
 
     public virtual void Death(GameObject killer)
     {
-        if (onDeathSfx != null)
-            AudioSource.PlayClipAtPoint(onDeathSfx,transform.position);
         if (killer!=null)
         {
             ParticleSystem p = Enviroment.pool.GetFromPool<Transform>(vfxPool).GetComponent<ParticleSystem>();

@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class UIManager : UIMenu
@@ -110,8 +105,11 @@ public class UIManager : UIMenu
 
     public void ToRating()
     {
-        if (appURL != null)
-            Application.OpenURL(appURL);
+        #if UNITY_ANDROID
+            Application.OpenURL(string.Format("market://details?id=" + Application.identifier));
+        #elif UNITY_IPHONE
+            Application.OpenURL("itms-apps://itunes.apple.com/app/" + Application.identifier);
+        #endif
     }
 
     public void InfoIO()

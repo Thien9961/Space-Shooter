@@ -83,7 +83,7 @@ public class Ship : Destrucible
             range = "Medium";
         else
             range = "Far";
-        string s = "PRICE: "+price+ " Mineral\n" +"\nHull Points: " + hp + "\n\nMultishot: " + weapon.multishot + "\n\nWeapon Damage: " + weapon.damage+"(x"+weapon.multishot+ ")\n\nAttack Cooldown: " + weapon.cooldown+"\n\nAsteroid Detector Module Range: " + range;
+        string s = "COST: "+price+ " Mineral\n" +"\nHull Points: " + hp + "\n\nMultishot: " + weapon.multishot + "\n\nWeapon Damage: " + weapon.damage+"(x"+weapon.multishot+ ")\n\nAttack Cooldown: " + weapon.cooldown+"s\n\nAsteroid Detector Module Range: " + range;
             return s;
     }
 }

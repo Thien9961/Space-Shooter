@@ -1019,8 +1019,7 @@ MonoBehaviour:
 
 
     We take
-    your privacy seriously and we are committed to protecting your personal information.
-    If you have any questions or concerns, please contact us.'
+    your privacy seriously and we are committed to protecting your personal information.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7e5ff2b651bb1d745b47be900e541396, type: 2}
   m_sharedMaterial: {fileID: -5653504420161190785, guid: 7e5ff2b651bb1d745b47be900e541396, type: 2}

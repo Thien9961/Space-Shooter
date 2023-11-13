@@ -48,8 +48,8 @@ public class PowerUp : MonoBehaviour
 
     public virtual void EffectStart()
     {
-        if(collectSfx != null)
-            AudioSource.PlayClipAtPoint(collectSfx,Camera.main.ScreenToWorldPoint(transform.position));
+        Camera.main.GetComponent<AudioSource>().clip = collectSfx;
+        Camera.main.GetComponent<AudioSource>().Play();
         CancelInvoke();
         DOTween.Kill(transform);
         GetComponent<Animator>().enabled = false;
