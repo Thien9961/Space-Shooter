@@ -545,6 +545,7 @@ GameObject:
   - component: {fileID: 8271998822155470280}
   - component: {fileID: 7071722643806432427}
   - component: {fileID: 3614202382334387697}
+  - component: {fileID: 7855911417847982325}
   m_Layer: 5
   m_Name: Lock Image
   m_TagString: Untagged
@@ -631,6 +632,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7855911417847982325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2180633650048432610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83772c98761fdd46b04b4d8639981c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shop: {fileID: 0}
+  manager: {fileID: 0}
 --- !u!1 &2194557415247068986
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,7 +767,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4022502939300588925}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5192193394130113969, guid: 5017e84657feb6349a40eb5dd261b337, type: 3}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &5543704514455267897
 GameObject:
   m_ObjectHideFlags: 0
@@ -1428,7 +1455,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4021184006397213313}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8182449838253416739
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,7 +1588,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5576839797325714018}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8357344190393346080
 GameObject:
   m_ObjectHideFlags: 0
@@ -1802,6 +1853,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83772c98761fdd46b04b4d8639981c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shop: {fileID: 0}
+  manager: {fileID: 0}
 --- !u!114 &3790795175599016704
 MonoBehaviour:
   m_ObjectHideFlags: 0

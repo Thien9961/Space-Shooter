@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static Ship player;
-    public static int mineral,level,extraMineral;
+    public static int mineral,level,extraMineral,highscore;
     public Shop shop;
     public Enviroment[] enviroment;
     public static EdgeCollider2D screenBound;
@@ -46,9 +46,6 @@ public class GameManager : MonoBehaviour
         if (manager.lvlupInterval > 0)
             manager.InvokeRepeating(nameof(LevelUp), 0, manager.lvlupInterval);
         player = Instantiate(manager.shop.ship[Shop.selected], GameObject.Find("Canvas").transform).GetComponent<Ship>();
-        player.HUD.Init();
-        player.weapon.owner = player;
-        player.HUD.SetText("Mineral Text",player.mineral.ToString().PadLeft(8,'0'));
         manager.SpawnEnable(true);
     }
 
@@ -122,6 +119,7 @@ public class GameManager : MonoBehaviour
             s1.value = SaveGame.Load<float>("voloume");
             s2.value = SaveGame.Load<float>("sensitivity");
             mineral = SaveGame.Load<int>("mineral");
+            highscore = SaveGame.Load<int>("high");
             Shop.selected = SaveGame.Load<int>("selected");
             foreach (Ship s in manager.shop.ship)
                 s.owned = SaveGame.Load<bool>(s.name);
@@ -148,10 +146,5 @@ public class GameManager : MonoBehaviour
         foreach (Ship s in manager.shop.ship)
             s.owned = SaveGame.Load<bool>(s.name);
         Debug.Log("Reseted");
-    }
-
-    private void Update()
-    {
-        Save();
     }
 }

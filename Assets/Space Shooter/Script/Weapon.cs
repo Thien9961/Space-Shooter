@@ -9,6 +9,9 @@ public class Weapon : MonoBehaviour
     public string weaponName;
     public float  cooldown = 1, damage = 1, spread=0;
     public static float sensivity = 20;
+    public int maxAmmo;
+
+    public int ammo;
     private float Spread
     {
         get { return spread; }
@@ -31,8 +34,14 @@ public class Weapon : MonoBehaviour
     {
         ready=true;
         cooldown = Mathf.Clamp(cooldown, 0.1f, Mathf.Infinity);
+        ammo = maxAmmo;
         trigger.GetComponent<Btn>().action=new Btn.Action(Fire);
         GetComponent<Image>().raycastTarget = false;
+    }
+
+    public int GetAmmo()
+    {
+        return ammo;
     }
 
     public List<Destrucible> HitScan()
@@ -78,10 +87,12 @@ public class Weapon : MonoBehaviour
     }
     public void Fire()
     {
-        if(ready)
+        if(ready && ammo>0)
         {
             ready = false;
             HitScan();
+            ammo--;
+            owner.HUD.SetText("Ammo Text", ammo.ToString());
             transform.DOPunchScale(transform.localScale*1.33f,0.1f,10,0);
             BlinkCrosshair(Color.red, 0.1f);
             StartCoroutine(coolingdown(cooldown));

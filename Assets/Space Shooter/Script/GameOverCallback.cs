@@ -8,6 +8,7 @@ public class GameOverCallback : EventCallback
 {
     public List<Button> button;
     public UIMenu rewardNotice;
+    public GameObject scoreboard;
     int _index;
 
     private void Awake()
@@ -60,7 +61,7 @@ public class GameOverCallback : EventCallback
     void Restart()
     {
         Hide();
-        UIManager.main.ShopIO();
+        ShopIO();
     }
 
     void Double()
@@ -79,4 +80,9 @@ public class GameOverCallback : EventCallback
         UIManager.main.SetBackground("menu_bg", Color.white);
     }
     // Create a generic delegate for the button click event.
+
+    public void ShowBoard()
+    {
+        scoreboard.gameObject.SetActive(true);
+    }
 }

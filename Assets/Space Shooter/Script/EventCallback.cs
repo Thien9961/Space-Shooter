@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EventCallback : MonoBehaviour
 {
+    public Shop shop;
+    public UIManager manager;
     public virtual void Kill()
     {
         Destroy(gameObject);
@@ -39,4 +41,24 @@ public class EventCallback : MonoBehaviour
         else
             Enviroment.pool.TakeToPool(13, transform);
     }
+
+    public void ShopIO()
+    {
+        shop.Display(!shop.gameObject.activeSelf);
+        manager.gameObject.SetActive(!manager.gameObject.activeSelf);
+        if (shop.gameObject.activeSelf)
+        {
+            manager.SetBackground("shop_bg", Color.white);
+            GameManager.musicManager.PlayAlbum("In Shop");
+        }
+        else
+        {
+            manager.gameObject.SetActive(true);
+            GameManager.musicManager.PlayAlbum("In Menu");
+            manager.SetBackground("menu_bg", Color.white);
+        }
+
+    }
+
+
 }

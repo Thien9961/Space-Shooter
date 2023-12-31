@@ -20,7 +20,7 @@ public class UIManager : UIMenu
         SetButtonAction("Info Button", InfoIO);
         SetButtonAction("Exit Info", InfoIO);
         SetButtonAction("Exit Setting", SettingIO);
-        SetButtonAction("Exit Shop", ShopIO);
+        //SetButtonAction("Exit Shop", ShopIO);
         SetButtonAction("Exit Privacy", PrivacyIO);
         SetButtonAction("Lisence Button", EULAIO);
         SetButtonAction("Exit EULA", EULAIO);
@@ -56,20 +56,7 @@ public class UIManager : UIMenu
 
     public void ShopIO()
     {  
-        shop.Display(!shop.gameObject.activeSelf);
-        gameObject.SetActive(!gameObject.activeSelf);
-        if (shop.gameObject.activeSelf)
-        {
-            SetBackground("shop_bg",Color.white);
-            GameManager.musicManager.PlayAlbum("In Shop");
-        } 
-        else
-        {
-            gameObject.SetActive(true);
-            GameManager.musicManager.PlayAlbum("In Menu");
-            SetBackground("menu_bg", Color.white);
-        }
-            
+       
     }
 
     public void SettingIO()
