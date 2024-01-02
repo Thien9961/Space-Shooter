@@ -23,8 +23,12 @@ public class Enviroment : MonoBehaviour
         spawnArea = GameObject.Find("Canvas").GetComponent<Canvas>().pixelRect;
         Rec.Scale(ref spawnArea,areaScale.x,areaScale.y);
         pool = GameObject.Find("Pool Manager").GetComponent<PoolManager>();
-        StartCoroutine(NaturalSpawn());
         //Debug.Log("Env_layerOrder: " + layerOrder);
+    }
+
+    protected void OnEnable()
+    {
+        StartCoroutine(NaturalSpawn());
     }
 
     public static void ClearAll()

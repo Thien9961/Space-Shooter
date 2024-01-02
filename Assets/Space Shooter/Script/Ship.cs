@@ -38,7 +38,7 @@ public class Ship : Destrucible
     public override void Death(GameObject killer)
     {
         base.Death(killer);
-        UIManager.main.gameOver.GetComponent<GameOverCallback>().SetResult(mineral, Mathf.RoundToInt(maxHp*0.4f), Mathf.RoundToInt(weapon.maxAmmo * 0.05f));
+        UIManager.main.gameOver.GetComponent<GameOverCallback>().SetResult(0, Mathf.RoundToInt(maxHp*0.4f), Mathf.RoundToInt(weapon.maxAmmo * 0.05f));
         UIManager.main.gameOver.gameObject.SetActive(true);
         HUD.hashtable.Clear();
         Destroy(gameObject);
@@ -102,7 +102,7 @@ public class Ship : Destrucible
     {
         gameObject.SetActive(false);
         GameManager.manager.SpawnEnable(false);
-        AsteroidField.GetActiveAsteroid().ForEach(x => x.Death(null));
+        Enviroment.ClearAll();
         UIManager.main.gameOver.GetComponent<GameOverCallback>().SetResult(mineral, Mathf.RoundToInt((maxHp - hp) * 0.4f), Mathf.RoundToInt((weapon.maxAmmo - weapon.ammo) * 0.05f));
         UIManager.main.gameOver.gameObject.SetActive(true);
         HUD.hashtable.Clear();

@@ -1817,9 +1817,9 @@ MonoBehaviour:
   - {fileID: 7071722643806432427}
   clickSfx: {fileID: 8300000, guid: 20cb9da9b1e674c2dadbeff749c8fc14, type: 3}
   ship:
-  - {fileID: 451492856315427624, guid: ab69b92f2fe15d74590bb4d18f318fe6, type: 3}
-  - {fileID: 3551132017933323111, guid: e6332e9d15aefe34f92860bbb26aff1f, type: 3}
-  - {fileID: 74128823210864842, guid: d355d220a69d43a4f899b51616272b29, type: 3}
+  - {fileID: 6665258958747310804, guid: ab69b92f2fe15d74590bb4d18f318fe6, type: 3}
+  - {fileID: 4763522519457224556, guid: e6332e9d15aefe34f92860bbb26aff1f, type: 3}
+  - {fileID: 2739094654955969094, guid: d355d220a69d43a4f899b51616272b29, type: 3}
   popup: {fileID: 0}
 --- !u!95 &1392366777979809822
 Animator:

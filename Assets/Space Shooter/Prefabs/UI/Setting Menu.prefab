@@ -245,7 +245,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 20
+  m_Value: 80
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1981,6 +1981,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83772c98761fdd46b04b4d8639981c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shop: {fileID: 0}
+  manager: {fileID: 0}
 --- !u!82 &4957481852030330224
 AudioSource:
   m_ObjectHideFlags: 0

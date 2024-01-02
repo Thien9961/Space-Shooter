@@ -1150,7 +1150,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &780839421
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1964,22 +1964,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 363878599}
     m_Modifications:
-    - target: {fileID: 857201568309889280, guid: efaf7eb799ed31b448ec3701912a71c5, type: 3}
-      propertyPath: m_Name
-      value: Joystick Sensitivity
-      objectReference: {fileID: 0}
-    - target: {fileID: 2927743461950991439, guid: efaf7eb799ed31b448ec3701912a71c5, type: 3}
-      propertyPath: m_Value
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2927743461950991439, guid: efaf7eb799ed31b448ec3701912a71c5, type: 3}
-      propertyPath: m_MaxValue
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 3457115856077647151, guid: efaf7eb799ed31b448ec3701912a71c5, type: 3}
-      propertyPath: m_text
-      value: Vibration
-      objectReference: {fileID: 0}
     - target: {fileID: 4335173074264335090, guid: efaf7eb799ed31b448ec3701912a71c5, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2063,46 +2047,6 @@ PrefabInstance:
     - target: {fileID: 4335173074264335090, guid: efaf7eb799ed31b448ec3701912a71c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5164527306460631892, guid: efaf7eb799ed31b448ec3701912a71c5, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5164527306460631892, guid: efaf7eb799ed31b448ec3701912a71c5, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5164527306460631892, guid: efaf7eb799ed31b448ec3701912a71c5, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 519420029}
-    - target: {fileID: 5164527306460631892, guid: efaf7eb799ed31b448ec3701912a71c5, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5164527306460631892, guid: efaf7eb799ed31b448ec3701912a71c5, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: set_volume
-      objectReference: {fileID: 0}
-    - target: {fileID: 5164527306460631892, guid: efaf7eb799ed31b448ec3701912a71c5, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.AudioListener, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5164527306460631892, guid: efaf7eb799ed31b448ec3701912a71c5, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5164527306460631892, guid: efaf7eb799ed31b448ec3701912a71c5, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5873492078884698952, guid: efaf7eb799ed31b448ec3701912a71c5, type: 3}
-      propertyPath: m_Name
-      value: Volume
-      objectReference: {fileID: 0}
-    - target: {fileID: 6270952097254898205, guid: efaf7eb799ed31b448ec3701912a71c5, type: 3}
-      propertyPath: m_Name
-      value: Viberation
       objectReference: {fileID: 0}
     - target: {fileID: 8838241263106947193, guid: efaf7eb799ed31b448ec3701912a71c5, type: 3}
       propertyPath: m_Name
