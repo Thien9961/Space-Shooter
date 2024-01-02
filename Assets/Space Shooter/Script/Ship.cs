@@ -1,6 +1,7 @@
 using BayatGames.SaveGameFree;
 using DG.Tweening;
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,7 @@ public class Ship : Destrucible
     public Weapon weapon;
     public Sprite[] damagedSprite;
     public Shield shield;
+    public ParticleSystem wrapDrive;
 
     float travelTime;
 
@@ -36,11 +38,7 @@ public class Ship : Destrucible
     public override void Death(GameObject killer)
     {
         base.Death(killer);
-        if (GameManager.highscore < mineral)
-            SaveGame.Save<int>("high", mineral);
-        GameManager.mineral += mineral;
-        GameManager.Save();
-        GameManager.extraMineral = mineral;
+        UIManager.main.gameOver.GetComponent<GameOverCallback>().SetResult(mineral, Mathf.RoundToInt(maxHp*0.4f), Mathf.RoundToInt(weapon.maxAmmo * 0.05f));
         UIManager.main.gameOver.gameObject.SetActive(true);
         HUD.hashtable.Clear();
         Destroy(gameObject);
@@ -91,13 +89,24 @@ public class Ship : Destrucible
     {
         string range;
         if (GetComponent<ADM>().sensivity > 3)
-            range = "Near";
+            range = "Close";
         else if (GetComponent<ADM>().sensivity > 2.5)
             range = "Medium";
         else
             range = "Far";
-        string s = "COST: "+price+ " Mineral\n" +"\nHull Points: " + hp + "\n\nMultishot: " + weapon.multishot + "\n\nWeapon Damage: " + weapon.damage+"(x"+weapon.multishot+ ")\n\nAttack Cooldown: " + weapon.cooldown+"s\n\nAsteroid Detector Module Range: " + range;
+        string s = "COST: "+price+ " Mineral\n" +"\nHull Points: " + maxHp + "\n\nMultishot: " + weapon.multishot + "\n\nWeapon Damage: " + weapon.damage+"(x"+weapon.multishot+ ")\n\nAttack Cooldown: " + weapon.cooldown+"s\n\nAmmo: "+weapon.maxAmmo+"\n\nAsteroid Detector Module Range: " + range;
             return s;
+    }
+
+    public void ActiveWrapDrive()
+    {
+        gameObject.SetActive(false);
+        GameManager.manager.SpawnEnable(false);
+        AsteroidField.GetActiveAsteroid().ForEach(x => x.Death(null));
+        UIManager.main.gameOver.GetComponent<GameOverCallback>().SetResult(mineral, Mathf.RoundToInt((maxHp - hp) * 0.4f), Mathf.RoundToInt((weapon.maxAmmo - weapon.ammo) * 0.05f));
+        UIManager.main.gameOver.gameObject.SetActive(true);
+        HUD.hashtable.Clear();
+        Destroy(gameObject);
     }
 
     public void UpdateTravelTime()
@@ -105,7 +114,7 @@ public class Ship : Destrucible
         travelTime-=1f;
         string s= TimeSpan.FromSeconds(travelTime).ToString(@"mm\:ss");
         if (travelTime <= 0 && hp > 0)
-            Death(null);
+            ActiveWrapDrive();
         else
             HUD.SetText("Timer", s);
         

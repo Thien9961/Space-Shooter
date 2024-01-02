@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logicSignal: 0
-  type: 0
+  inputType: 1
   text: {fileID: 0}
 --- !u!1 &5250949568225357626
 GameObject:
@@ -374,8 +374,10 @@ MonoBehaviour:
   cooldown: 0.2
   damage: 4
   spread: 5
-  maxAmmo: 50
+  maxAmmo: 90
+  ammo: 0
   multishot: 8
+  particlePool: 12
   joystick: {fileID: 8757241428608655334}
   trigger: {fileID: 4402949595731920942}
   owner: {fileID: 74128823210864842}
@@ -919,15 +921,16 @@ MonoBehaviour:
   maxHp: 60
   hp: 100
   speed: 0.004
-  owned: 1
+  owned: 0
   invulnerable: 0
-  price: 7500
+  price: 750
   mineral: 0
   HUD: {fileID: 7005246752312469906}
   weapon: {fileID: 3989838956114689958}
   damagedSprite:
   - {fileID: 21300000, guid: 21e49bdda7d713843bbad1c940f84308, type: 3}
   shield: {fileID: 0}
+  wrapDrive: {fileID: 2281130995366854113, guid: 41bde9606e9893b4cbf78e9165b49af8, type: 3}
 --- !u!222 &7044319181651889129
 CanvasRenderer:
   m_ObjectHideFlags: 0

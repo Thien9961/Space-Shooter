@@ -12,7 +12,7 @@ public class Enviroment : MonoBehaviour
     public Rect spawnArea;
     public Vector2 areaScale= Vector2.one;
     public float maxInterval, minInterval;
-    public static readonly float spatialExtend=18;
+    public static readonly float spatialExtend=18f;
     //spatial_extend = spaceship's_speed*(desired_travel_time/fixed_delta_time)
     public static int layerOrder= 32767;
 

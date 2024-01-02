@@ -67,11 +67,13 @@ public class Shop : UIMenu
         {
             SetButtonText("Select Ship Button", "Play");
             SetButtonAction("Select Ship Button", GameManager.Begin);
+            SetObjectActive("Lock Image", false);
         }   
         else
         {
             SetButtonText("Select Ship Button", "Unlock: " + s.price);
             SetButtonAction("Select Ship Button", Sell);
+            SetObjectActive("Lock Image", true);
         }
             
     }
@@ -97,13 +99,5 @@ public class Shop : UIMenu
             }
     }
 
-    private void Update()
-    {
-        Ship s = ship[selected];
-        if (!s.owned)
-            SetObjectActive("Lock Image", true);
-        else
-            SetObjectActive("Lock Image", false);
-    }
 }
 

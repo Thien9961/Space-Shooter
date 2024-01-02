@@ -1,6 +1,10 @@
+using BayatGames.SaveGameFree;
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +13,9 @@ public class GameOverCallback : EventCallback
     public List<Button> button;
     public UIMenu rewardNotice;
     public GameObject scoreboard;
+    public TextMeshProUGUI gameResult;
+
+    public string result;
     int _index;
 
     private void Awake()
@@ -83,6 +90,19 @@ public class GameOverCallback : EventCallback
 
     public void ShowBoard()
     {
-        scoreboard.gameObject.SetActive(true);
+        gameResult.text = result;
+        scoreboard.SetActive(true);
+    }
+
+    public void SetResult(int collectedMineral,int repairCost, int ammCost)
+    {
+        int score = collectedMineral - ammCost - repairCost;
+        if (GameManager.highscore < score)
+            SaveGame.Save("high", score);
+        GameManager.mineral += score;
+        GameManager.Save();
+        GameManager.extraMineral = score;
+        result = $"<color=yellow> {SaveGame.Load<int>("high")}</color>\n\n<color=green>+{collectedMineral}</color>\n<color=red>-{repairCost}</color>\n<color=red>-{ammCost}</color>\n\n{score}";
     }
 }
+

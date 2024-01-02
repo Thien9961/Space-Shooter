@@ -134,8 +134,9 @@ public class GameManager : MonoBehaviour
         SaveGame.Save("vibration", true);
         SaveGame.Save("voloume", s1.maxValue);
         SaveGame.Save("sensitivity", s2.maxValue*0.2f);
-        SaveGame.Save("mineral", 0);
+        SaveGame.Save("mineral", manager.shop.ship[0].price);
         SaveGame.Save("selected", 0);
+        SaveGame.Save("high", 0);
         foreach (Ship s in manager.shop.ship)
             SaveGame.Save(s.name, false);
         t.isOn = SaveGame.Load<bool>("vibration");

@@ -21,8 +21,7 @@ public class Weapon : MonoBehaviour
             
         }
     }
-    public int multishot = 1;
-    public readonly int particlePool=12;
+    public int multishot = 1, particlePool = 12;
     public Joystick joystick;
     public GameObject trigger;
     public Ship owner;
@@ -35,7 +34,10 @@ public class Weapon : MonoBehaviour
         ready=true;
         cooldown = Mathf.Clamp(cooldown, 0.1f, Mathf.Infinity);
         ammo = maxAmmo;
-        trigger.GetComponent<Btn>().action=new Btn.Action(Fire);
+        if (trigger.GetComponent<Btn>().inputType != InputType.PRESS)
+            trigger.GetComponent<Btn>().action = Fire;
+        else
+            trigger.GetComponent<Button>().onClick.AddListener(Fire);
         GetComponent<Image>().raycastTarget = false;
     }
 
@@ -56,6 +58,7 @@ public class Weapon : MonoBehaviour
                     ParticleSystem p = Enviroment.pool.GetFromPool<Transform>(particlePool).GetComponent<ParticleSystem>();
                     p.transform.position = hit;
                     p.transform.localScale = a.transform.localScale;
+                    p.GetComponent<Renderer>().sortingOrder = a.GetComponent<SpriteRenderer>().sortingOrder + 1;
                     p.Play();
                     if (owner!=null)
                         a.TakeDamage(owner.gameObject,damage);

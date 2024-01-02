@@ -59,8 +59,8 @@ public class AsteroidField : Enviroment
                     Asteroid a = asteroidClone.GetComponent<Asteroid>();
                     a.poolIndex = objectPool[rng];
                     a.maxSize = asteroidSize;
-                    a.GetComponent<SpriteRenderer>().sortingOrder = layerOrder;
                     layerOrder--;
+                    a.GetComponent<SpriteRenderer>().sortingOrder = layerOrder;
                     Vector2 v1 = GameManager.RandomLocInRect(spawnArea);
                     Vector2 v2 = Camera.main.ScreenToWorldPoint(new Vector3(v1.x, v1.y, 0));
                     Vector3 v3 = new Vector3(Random.Range(-asteroidMaxVelocity.x, asteroidMaxVelocity.x), Random.Range(-asteroidMaxVelocity.y, asteroidMaxVelocity.y), Random.Range(-asteroidMaxVelocity.z, asteroidMaxVelocity.z));

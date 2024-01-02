@@ -25,6 +25,8 @@ public class Destrucible : MonoBehaviour
             ParticleSystem p = Enviroment.pool.GetFromPool<Transform>(vfxPool).GetComponent<ParticleSystem>();
             p.transform.localScale = transform.localScale;
             p.transform.position = transform.position;
+            if(TryGetComponent(out SpriteRenderer renderer))
+                p.GetComponent<Renderer>().sortingOrder = renderer.sortingOrder;
             p.Play();
         } 
     }
